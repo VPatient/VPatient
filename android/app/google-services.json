@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168069773129",
+    "project_id": "vpatient",
+    "storage_bucket": "vpatient.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168069773129:android:f9f9023c9e677a3864cc98",
+        "android_client_info": {
+          "package_name": "com.example.vpatient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168069773129-1m4rsb8ud9ngasr3oep28i1ubpg5mqk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARNW5ZIw07bGQJGbAORDs24a9zjc3lb1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168069773129-1m4rsb8ud9ngasr3oep28i1ubpg5mqk7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
