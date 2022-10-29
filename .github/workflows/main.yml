@@ -1,15 +1,14 @@
-name: CI
+name: CI/CD
 on:
   push:
     branches:
     - master
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
@@ -36,3 +35,13 @@ jobs:
       with:
         name: apk-release
         path: build/app/outputs/bundle/release/app-release.apk
+    
+    name: Deploy
+      if: (github.base_ref == 'master' && github.event_name == 'pull_request')
+      uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+      with:
+        appId: ${{secrets.FIREBASE_ANDROID_APPID}}
+        token: ${{secrets.FIREBASE_TOKEN}}
+        groups: testers
+        release_notes: "a new version"
+        file: build/app/outputs/apk/release/app-release.apk
