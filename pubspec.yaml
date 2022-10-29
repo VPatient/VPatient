@@ -19,6 +19,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.10.0"
+
+flutter_icons:
+  android: true
+  image_path: "assets/images/icons/vpatient-logo.png"
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
