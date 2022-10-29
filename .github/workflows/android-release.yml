@@ -6,7 +6,6 @@ on:
     branches: [ master ]
 
 jobs:
-  
   build:
     name: Build APK and Create release
     needs: [ version ]
