@@ -22,7 +22,7 @@ jobs:
         run: echo "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
       - name: Decode firebase_option
         env:
-          firebase_options_dart: ${{secrets.FIREBASE_OPTION}}
+          firebase_options_dart: ${{secrets.FIREBASE_OPTIONS}}
         run : echo "$firebase_options_dart" > lib/firebase_options.dart
 
       - uses: subosito/flutter-action@v2
@@ -39,5 +39,5 @@ jobs:
         with:
             appId: ${{secrets.FIREBASE_ANDROID_APPID}}
             token: ${{secrets.FIREBASE_TOKEN}}
-            groups: pre-tester
+            groups: Testers
             file: build/app/outputs/apk/release/app-release.apk
