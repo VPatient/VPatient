@@ -13,6 +13,10 @@ dependencies:
   firebase_core: ^2.1.0
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.2.13
+
+flutter_native_splash:
+  color: "#42a5f5"
 
 dev_dependencies:
 
