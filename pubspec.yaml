@@ -10,20 +10,18 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  firebase_auth: ^4.1.1
   firebase_core: ^2.1.0
   flutter:
     sdk: flutter
-  flutter_native_splash: ^2.2.13
-
-flutter_native_splash:
-  color: "#42a5f5"
+  fluttertoast: ^8.1.1
+  google_sign_in: ^5.4.2
 
 dev_dependencies:
-
+  flutter_launcher_icons: "^0.10.0"
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: "^0.10.0"
 
 flutter_icons:
   android: true
@@ -33,3 +31,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/
+    - assets/images/icons/
