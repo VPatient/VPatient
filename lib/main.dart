@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:vpatient/screens/home_screen.dart';
-import 'package:vpatient/utils/local_storage.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:vpatient/screens/home/home_view.dart';
+import 'package:vpatient/style/themes.dart';
 
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'screens/login_screen.dart';
+import 'screens/login/login_view.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'dart:io';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await LocalStorage.init();
+  await GetStorage.init();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await sleepApp();
@@ -31,15 +32,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Sanal Hastam',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LocalStorage.storage.getString("token") != null
-          ? const HomeScreen()
-          : LoginScreen(),
+      theme: Themes.baseTheme,
+      home: GetStorage().hasData("token") ? HomeScreen() : LoginScreen(),
     );
   }
 }

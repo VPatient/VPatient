@@ -15,19 +15,8 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
         email: json['email'],
-        id: json['id'],
+        id: json['_id'],
         name: json['name'],
-        studentNumber: json['studentNumber'],
-        password: json['password']);
-  }
-
-  @override
-  User fromJson(Map<String, dynamic> json) {
-    return User(
-        email: json['email'],
-        id: json['id'],
-        name: json['name'],
-        studentNumber: json['studentNumber'],
-        password: json['password']);
+        studentNumber: json['studentNumber']);
   }
 }

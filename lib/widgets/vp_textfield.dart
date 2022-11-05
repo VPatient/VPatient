@@ -32,19 +32,19 @@ class VPTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
       child: TextField(
         keyboardType: _keyboardType,
-        style: const TextStyle(color: VPColors.vpGreen, fontSize: 18),
+        style: Theme.of(context).textTheme.bodyText1,
         obscureText: _isObscured,
         controller: _controller,
-        cursorColor: VPColors.vpGreen,
+        cursorColor: VPColors.primaryColor,
         decoration: InputDecoration(
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             icon: Icon(
               _icon,
-              color: VPColors.vpGreen,
+              color: VPColors.primaryColor,
             ),
             hintText: _text,
-            hintStyle: const TextStyle(color: VPColors.vpGreen, fontSize: 18)),
+            hintStyle: Theme.of(context).textTheme.bodyText1),
       ),
     );
   }
