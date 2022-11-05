@@ -5,7 +5,11 @@ import 'package:vpatient/utils/local_storage.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+
 import 'screens/login_screen.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'screens/Login.dart';
+import 'dart:io';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,8 +17,17 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await LocalStorage.init();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await sleepApp();
+  FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
+Future<void> sleepApp() async {
+  await Future.delayed(const Duration(seconds: 2), () {
+  });
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
