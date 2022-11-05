@@ -10,18 +10,17 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
-  firebase_auth: ^4.1.1
   firebase_core: ^2.1.0
   flutter:
     sdk: flutter
-  fluttertoast: ^8.1.1
-  google_sign_in: ^5.4.2
-  http: ^0.13.5
-  shared_preferences: ^2.0.15
   flutter_native_splash: ^2.2.13
+  get: ^4.6.5
+  get_storage: ^2.0.3
+  http: ^0.13.5
+  jwt_decode: ^0.3.1
 
 flutter_native_splash:
-  color: "#42a5f5"
+  color: "#3ECF8E"
   image: assets/images/icons/vpatient-logo.png
 
 dev_dependencies:
