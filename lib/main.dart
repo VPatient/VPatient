@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:vpatient/screens/home_screen.dart';
+import 'package:vpatient/utils/local_storage.dart';
 
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+
+import 'screens/login_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'screens/Login.dart';
 import 'dart:io';
@@ -11,6 +16,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await LocalStorage.init();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await sleepApp();
@@ -34,7 +40,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: LocalStorage.storage.getString("token") != null
+          ? const HomeScreen()
+          : LoginScreen(),
     );
   }
 }
