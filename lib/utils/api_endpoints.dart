@@ -5,8 +5,10 @@ class APIEndpoints {
   static const String examplePostEndpoint =
       "${_baseUrl}api/exampleRoute/examplePost";
 
-  //register
+  //authentication
   static const String registerEndpoint = "${_baseUrl}auth/register";
-  //login
   static const String loginEndpoint = "${_baseUrl}auth/login";
+
+  //patient
+  static const String getPatientsEndpoint = "${_baseUrl}patient/list";
 }
