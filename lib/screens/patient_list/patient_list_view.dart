@@ -15,6 +15,17 @@ class PatientListScreen extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            stops: const [0.1, 0.9],
+            colors: [
+              Colors.blue[300]!.withOpacity(1),
+              Colors.purple[300]!.withOpacity(1)
+            ],
+          ),
+        ),
         padding: const EdgeInsets.all(16),
         child: FutureBuilder(
             future: _controller.patients,
