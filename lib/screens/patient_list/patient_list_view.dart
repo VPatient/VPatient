@@ -5,6 +5,7 @@ import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/widgets/vp_button.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 import 'package:vpatient/widgets/vp_patient_card.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class PatientListScreen extends GetView {
   PatientListScreen({Key? key}) : super(key: key);
@@ -20,32 +21,38 @@ class PatientListScreen extends GetView {
             future: _controller.patients,
             builder: (context, snapshot) {
               if (snapshot.connectionState != ConnectionState.done) {
-                return const VPCircularProgressIndicator();
+                return const VPCircularProgressIndicator(
+                    color: VPColors.primaryColor);
               } else {
                 return Column(
+                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
-                      height: 500,
-                      child: PageView.builder(
-                        onPageChanged: (page) =>
-                            _controller.setActivePage = page,
-                        controller: _controller.pageController,
-                        itemCount: snapshot.data?.length,
-                        pageSnapping: true,
-                        itemBuilder: (context, index) {
-                          return PatientCard(
-                              patient: snapshot.data!.elementAt(index));
-                        },
+                    Flexible(
+                      flex: 6,
+                      child: CarouselSlider(
+                        items: snapshot.data!
+                            .map((e) => PatientCard(patient: e))
+                            .toList(),
+                        options: CarouselOptions(
+                            enlargeCenterPage: true,
+                            enableInfiniteScroll: false,
+                            onPageChanged: (index, reason) =>
+                                _controller.setActivePage = index,
+                            height: Get.size.height * .7),
                       ),
                     ),
-                    _indicators(snapshot.data!.length),
-                    VPButton(
-                        bgColor: VPColors.primaryColor,
-                        text: "Hasta Seç",
-                        textColor: Colors.white,
-                        function: () => _controller.selectPatient(),
-                        width: 0.5)
+                    Flexible(
+                        flex: 1, child: _indicators(snapshot.data!.length)),
+                    Flexible(
+                      flex: 1,
+                      child: VPButton(
+                          bgColor: VPColors.primaryColor,
+                          text: "Hasta Seç",
+                          textColor: Colors.white,
+                          function: () => _controller.selectPatient(),
+                          width: 0.5),
+                    )
                   ],
                 );
               }
@@ -72,3 +79,17 @@ class PatientListScreen extends GetView {
         ));
   }
 }
+
+/* 
+PageView.builder(
+                        onPageChanged: (page) =>
+                            _controller.setActivePage = page,
+                        controller: _controller.pageController,
+                        itemCount: snapshot.data?.length,
+                        pageSnapping: true,
+                        itemBuilder: (context, index) {
+                          return PatientCard(
+                              patient: snapshot.data!.elementAt(index));
+                        },
+                      )
+*/

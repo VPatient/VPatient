@@ -27,7 +27,7 @@ class VPTextField extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(25))),
+          borderRadius: BorderRadius.all(Radius.circular(50))),
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
       child: TextField(

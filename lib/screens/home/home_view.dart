@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:vpatient/screens/chat_simulation/chat_simulation_view.dart';
 import 'package:vpatient/screens/home/home_controller.dart';
 import 'package:vpatient/screens/login/login_view.dart';
 import 'package:vpatient/screens/patient_list/patient_list_view.dart';
@@ -42,7 +43,13 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Get.to(PatientListScreen());
             },
-          )
+          ),
+          ElevatedButton(
+            child: const Text("Chat Ekranı"),
+            onPressed: () {
+              Get.to(ChatSimulationScreen());
+            },
+          ),
         ],
       )),
     );

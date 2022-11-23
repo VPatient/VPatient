@@ -11,4 +11,5 @@ class APIEndpoints {
 
   //patient
   static const String getPatientsEndpoint = "${_baseUrl}patient/list";
+  static const String getPatientById = "${_baseUrl}patient/get";
 }
