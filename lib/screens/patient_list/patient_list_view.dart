@@ -82,7 +82,7 @@ class PatientListScreen extends GetView {
               height: 10,
               decoration: BoxDecoration(
                   color: _controller.activePage.value == index
-                      ? Colors.black54
+                      ? VPColors.primaryColor
                       : Colors.black12,
                   shape: BoxShape.circle),
             );
