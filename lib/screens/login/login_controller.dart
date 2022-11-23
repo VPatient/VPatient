@@ -10,7 +10,7 @@ import 'package:vpatient/utils/api_endpoints.dart';
 
 class LoginController extends GetxController {
   navigateToRegister() {
-    Get.to(RegisterScreen());
+    Get.to(() => RegisterScreen());
   }
 
   signIn(String email, String password) async {
@@ -29,7 +29,7 @@ class LoginController extends GetxController {
           backgroundColor: Get.theme.primaryColor,
           colorText: Colors.white,
           icon: const Icon(Icons.done, color: Colors.white));
-      Get.to(HomeScreen());
+      Get.to(() => HomeScreen());
     } else {
       Get.snackbar("Hata", response.reasonPhrase!,
           backgroundColor: Colors.red,

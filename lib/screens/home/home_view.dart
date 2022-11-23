@@ -35,19 +35,19 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               GetStorage().remove("token");
               GetStorage().remove("selectedPatient");
-              Get.to(LoginScreen());
+              Get.to(() => LoginScreen());
             },
           ),
           ElevatedButton(
             child: const Text("Hastaları Gör"),
             onPressed: () {
-              Get.to(PatientListScreen());
+              Get.to(() => PatientListScreen());
             },
           ),
           ElevatedButton(
             child: const Text("Chat Ekranı"),
             onPressed: () {
-              Get.to(ChatSimulationScreen());
+              Get.to(() => ChatSimulationScreen());
             },
           ),
         ],

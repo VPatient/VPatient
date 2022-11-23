@@ -9,7 +9,7 @@ import 'package:vpatient/utils/api_endpoints.dart';
 
 class RegisterController extends GetxController {
   navigateToLogin() {
-    Get.to(LoginScreen());
+    Get.to(() => LoginScreen());
   }
 
   register(String email, String password, String name, String studentNo) async {
@@ -18,10 +18,10 @@ class RegisterController extends GetxController {
     final response = await http.post(Uri.parse(APIEndpoints.registerEndpoint),
         headers: {"Content-Type": "application/json"},
         body: json.encode({
-          "email": email,
-          "password": password,
           "name": name,
-          "studentNumber": studentNo
+          "studentNumber": studentNo,
+          "email": email,
+          "password": password
         }));
 
     if (response.statusCode == 200) {
@@ -29,7 +29,7 @@ class RegisterController extends GetxController {
           backgroundColor: VPColors.primaryColor,
           colorText: Colors.white,
           icon: const Icon(Icons.done, color: Colors.white));
-      Get.to(LoginScreen());
+      Get.to(() => LoginScreen());
     } else {
       Get.snackbar("Hata", response.reasonPhrase!,
           backgroundColor: Colors.red,
@@ -49,14 +49,6 @@ class RegisterController extends GetxController {
 
     if (GetUtils.isNull(password)) {
       Get.snackbar("Uyarı!", "Şifre boş bırakılamaz.",
-          backgroundColor: Colors.amber,
-          colorText: Colors.white,
-          icon: const Icon(Icons.warning, color: Colors.white));
-      return false;
-    }
-
-    if (!GetUtils.isAlphabetOnly(name)) {
-      Get.snackbar("Uyarı!", "Ad-soyad sadece harflerden oluşmalıdır.",
           backgroundColor: Colors.amber,
           colorText: Colors.white,
           icon: const Icon(Icons.warning, color: Colors.white));

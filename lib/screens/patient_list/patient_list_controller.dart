@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:vpatient/models/patient.dart';
-import 'package:vpatient/screens/home/home_view.dart';
+import 'package:vpatient/screens/chat_simulation/chat_simulation_view.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 
 class PatientListController extends GetxController {
@@ -16,9 +16,6 @@ class PatientListController extends GetxController {
   }
 
   get activePage => _activePage;
-
-  final PageController pageController =
-      PageController(viewportFraction: 0.8, initialPage: 0);
 
   List<Patient> _patients = List.empty();
 
@@ -48,8 +45,9 @@ class PatientListController extends GetxController {
     }
   }
 
-  void selectPatient() {
-    GetStorage().write("selectedPatient", _patients[_activePage.value].id);
-    Get.off(HomeScreen());
+  void selectPatient() async {
+    await GetStorage()
+        .write("selectedPatient", _patients[_activePage.value].id);
+    Get.off(() => ChatSimulationScreen());
   }
 }
