@@ -21,7 +21,16 @@ class ChatSimulationController extends GetxController
   }
 
   final List<ChatMessage> _messages = [
-    ChatMessage("Seni seviyorum.", MessageSender.patient),
+    ChatMessage(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet, eros et elementum rhoncus, quam nulla consequat purus, at fermentum dolor velit quis metus. Ut at finibus augue. Mauris nunc mauris, suscipit ut nulla vel, volutpat congue diam. Praesent ullamcorper justo tempus purus dapibus vulputate. Maecenas viverra lacinia mi, eu tristique lacus auctor vel. Aenean at ultrices sapien, vel egestas velit.",
+        MessageSender.patient),
+    ChatMessage(
+        "Lorem ipsum dolor sit amet. Ut at finibus augue. Mauris nunc mauris, suscipit ut nulla vel, volutpat congue diam. Praesent ullamcorper justo tempus purus dapibus vulputate. Maecenas viverra lacinia mi, eu tristique lacus auctor vel. Aenean at ultrices sapien, vel egestas velit.",
+        MessageSender.patient),
+    ChatMessage(
+        "Eros et elementum rhoncus, quam nulla. Praesent ullamcorper justo tempus purus dapibus vulputate. Maecenas viverra lacinia mi, eu tristique lacus auctor vel. Aenean at ultrices sapien, vel egestas velit.",
+        MessageSender.patient),
+    ChatMessage("Merhaba", MessageSender.patient),
   ];
 
   Patient? patient;
