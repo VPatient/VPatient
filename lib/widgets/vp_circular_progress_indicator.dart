@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:vpatient/style/colors.dart';
 
 class VPCircularProgressIndicator extends StatelessWidget {
-  const VPCircularProgressIndicator({super.key});
+  const VPCircularProgressIndicator({super.key, required this.color});
+
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: CircularProgressIndicator(
-        color: VPColors.primaryColor,
+        color: color,
       ),
     );
   }

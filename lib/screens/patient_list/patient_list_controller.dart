@@ -33,11 +33,11 @@ class PatientListController extends GetxController {
         });
 
     if (response.statusCode == 200) {
-      debugPrint(response.body);
       final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
 
       _patients =
           parsed.map<Patient>((json) => Patient.fromJson(json)).toList();
+
       return _patients;
     } else {
       Get.snackbar("Hata!", "Hasta bilgileri çekilemedi.",
