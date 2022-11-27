@@ -8,6 +8,7 @@ import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 import 'package:vpatient/widgets/vp_textfield.dart';
 
+import 'forms/PainDescriptionForm.dart';
 import 'forms/SocialDemographicForm.dart';
 
 class ChatSimulationScreen extends StatelessWidget {
@@ -106,8 +107,8 @@ class ChatSimulationScreen extends StatelessWidget {
                         ),
                       ),
                       TabBarView(children: [
-                        Center(child:  SocialDemographicForm()),
-                        Center(child: Text("Form-2 burada gözükecek.")),
+                        SocialDemographicForm(),
+                        PainDescriptionForm(),
                         Center(child: Text("Form-3 burada gözükecek.")),
                         Center(child: Text("Form-4 burada gözükecek.")),
                       ])

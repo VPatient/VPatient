@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vpatient/screens/chat_simulation/forms/util/FormConstants.dart';
+import 'package:vpatient/screens/chat_simulation/forms/util/FormWidgets.dart';
 import 'package:vpatient/widgets/vp_textfield.dart';
 
 
@@ -24,60 +26,72 @@ class FormContent extends StatelessWidget {
       padding: const EdgeInsets.only(left: 2.0,top: 50.0,right: 2.0,bottom: 2.0),
       child: SingleChildScrollView(
         child: Column(
-          children:  [
-            const SizedBox(height: 5),
-            Text("Sosyo Demografik Form",style: TextStyle(color: Colors.black.withOpacity(0.6),fontSize:25)),
-            const VpTextField(
+          children: const [
+             SizedBox(height: 5),
+            FormHeader(text: socialDemographicFormHeader),
+             VpTextField(
                 hint: "Ad Soyad",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Cinsiyet",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Yaş",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Medeni Durum",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Eğitim Düzeyi",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Meslek",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Çocuk Sayısı",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Sosyal Güvence",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Irk/Din",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Refakatçisi",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Kan Grubu",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Bulaşıcı Hastalık",
                 keyboardType: TextInputType.text
             ),
-            const VpTextField(
+             VpTextField(
                 hint: "Primer Tıbbi Tanı",
                 keyboardType: TextInputType.text
+            ),
+             VpTextField(
+                hint: "Boy",
+                keyboardType: TextInputType.number
+            ),
+             VpTextField(
+                hint: "Kilo",
+                keyboardType: TextInputType.number
+            ),
+             VpTextField(
+                hint: "BKI",
+                keyboardType: TextInputType.number
             )
           ],
         ),
