@@ -8,6 +8,8 @@ import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 import 'package:vpatient/widgets/vp_textfield.dart';
 
+import 'forms/SocialDemographicForm.dart';
+
 class ChatSimulationScreen extends StatelessWidget {
   ChatSimulationScreen({super.key});
 
@@ -104,7 +106,7 @@ class ChatSimulationScreen extends StatelessWidget {
                         ),
                       ),
                       TabBarView(children: [
-                        Center(child: Text("Form-1 burada gözükecek.")),
+                        Center(child:  SocialDemographicForm()),
                         Center(child: Text("Form-2 burada gözükecek.")),
                         Center(child: Text("Form-3 burada gözükecek.")),
                         Center(child: Text("Form-4 burada gözükecek.")),
