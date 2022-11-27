@@ -87,7 +87,7 @@ class _VpTextFieldState extends State<VpTextField> {
       child: TextField(
           keyboardType: widget.keyboardType,
           style: Theme.of(context).textTheme.bodyText1,
-          obscureText: true,
+          obscureText: false,
           controller: _controller,
           cursorColor: VPColors.primaryColor,
         decoration: InputDecoration(
@@ -100,10 +100,3 @@ class _VpTextFieldState extends State<VpTextField> {
     );
   }
 }
-
-/***
- * enabledBorder: const OutlineInputBorder(
-    borderSide:
-    BorderSide(width: 3, color: VPColors.primaryColor)),
-    hintStyle: Theme.of(context).textTheme.bodyText1
- */
