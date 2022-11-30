@@ -38,32 +38,19 @@ class ChatSimulationScreen extends StatelessWidget {
                 )),
           ),
           Align(
-            alignment: Alignment.bottomLeft,
+            alignment: Alignment.bottomCenter,
             child: Container(
-              margin: const EdgeInsets.only(bottom: 30),
+              margin: EdgeInsets.only(bottom: Get.size.height * 0.055),
               width: double.infinity,
               color: Colors.grey[300],
               child: VPTextField(
+                leadWidget: _dropDownMenu(),
+                trailWidget: _sendButton(),
                 text: "Hastayla iletişime geçin",
                 controller: _controller.chatController,
-                icon: Icons.sms,
+                enabled: false,
                 isObscured: false,
                 keyboardType: TextInputType.text,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Container(
-              padding: const EdgeInsets.only(right: 20, bottom: 50),
-              child: FloatingActionButton(
-                onPressed: () => _controller.sendMessage(),
-                backgroundColor: VPColors.primaryColor,
-                elevation: 0,
-                child: const Icon(
-                  Icons.send,
-                  color: Colors.white,
-                ),
               ),
             ),
           ),
@@ -77,13 +64,14 @@ class ChatSimulationScreen extends StatelessWidget {
                   endIndent: 100,
                 ),
               ),
-              minHeight: Get.size.height * .04,
+              minHeight: Get.size.height * .05,
               maxHeight: Get.size.height * .9,
               panel: DefaultTabController(
                 length: 4,
                 child: Scaffold(
                     body: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 26.0, horizontal: 16),
                   child: Stack(
                     children: const [
                       Align(
@@ -118,6 +106,53 @@ class ChatSimulationScreen extends StatelessWidget {
               )),
         ],
       ),
+    );
+  }
+
+  FloatingActionButton _sendButton() {
+    return FloatingActionButton(
+      onPressed: () => _controller.sendMessage(),
+      backgroundColor: VPColors.primaryColor,
+      elevation: 0,
+      child: const Icon(
+        Icons.send,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  PopupMenuButton<String> _dropDownMenu() {
+    return PopupMenuButton<String>(
+      color: Colors.white,
+      tooltip: "Hastayla iletişime geçmek için tıklayın.",
+      elevation: 0,
+      constraints: BoxConstraints(minWidth: Get.size.width),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      offset: const Offset(0, 0),
+      onSelected: (value) => _controller.chatController.text = value,
+      icon: const Icon(Icons.arrow_circle_up,
+          color: VPColors.primaryColor, size: 26),
+      itemBuilder: (context) {
+        return const <String>[
+          "Uzun cevaplara bir örnek olarak bu cevabı ekledik. Uzun cevaplar bu şekilde gözükecek o yüzden yazıyı olabildiğince uzun tutmaya çalışıyorum :D",
+          "Kısa Cevap",
+          "Uzun cevaplara bir örnek olarak bu cevabı ekledik. Uzun cevaplar bu şekilde gözükecek o yüzden yazıyı olabildiğince uzun tutmaya çalışıyorum :D",
+          "Kısa Cevap"
+        ]
+            .map(
+              (e) => PopupMenuItem<String>(
+                  value: e,
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    width: double.infinity,
+                    child: Text(e,
+                        overflow: TextOverflow.visible,
+                        style: Get.theme.textTheme.caption
+                            ?.copyWith(color: VPColors.primaryColor)),
+                  )),
+            )
+            .toList();
+      },
     );
   }
 

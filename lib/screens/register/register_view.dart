@@ -30,9 +30,6 @@ class RegisterScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            FractionallySizedBox(
-                widthFactor: 0.4,
-                child: Image.asset("assets/images/icons/vpatient-logo.png")),
             Column(
               children: [
                 VPTextField(
