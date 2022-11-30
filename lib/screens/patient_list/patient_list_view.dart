@@ -27,7 +27,7 @@ class PatientListScreen extends GetView {
             ],
           ),
         ),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: FutureBuilder(
             future: _controller.patients,
             builder: (context, snapshot) {
@@ -62,7 +62,7 @@ class PatientListScreen extends GetView {
                           text: "Hasta Seç",
                           textColor: Colors.white,
                           function: () => _controller.selectPatient(),
-                          width: 0.5),
+                          width: .8),
                     )
                   ],
                 );
@@ -90,17 +90,3 @@ class PatientListScreen extends GetView {
         ));
   }
 }
-
-/* 
-PageView.builder(
-                        onPageChanged: (page) =>
-                            _controller.setActivePage = page,
-                        controller: _controller.pageController,
-                        itemCount: snapshot.data?.length,
-                        pageSnapping: true,
-                        itemBuilder: (context, index) {
-                          return PatientCard(
-                              patient: snapshot.data!.elementAt(index));
-                        },
-                      )
-*/
