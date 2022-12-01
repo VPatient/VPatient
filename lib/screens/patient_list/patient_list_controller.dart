@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:vpatient/models/patient.dart';
 import 'package:vpatient/screens/chat_simulation/chat_simulation_view.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
+import 'package:vpatient/utils/vp_snackbar.dart';
 
 class PatientListController extends GetxController {
   final _activePage = 0.obs;
@@ -37,10 +37,7 @@ class PatientListController extends GetxController {
 
       return _patients;
     } else {
-      Get.snackbar("Hata!", "Hasta bilgileri çekilemedi.",
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-          icon: const Icon(Icons.error, color: Colors.white));
+      VPSnackbar.error("Hasta bilgileri çekilemedi.");
       return List.empty();
     }
   }

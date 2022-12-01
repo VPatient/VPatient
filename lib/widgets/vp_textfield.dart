@@ -5,7 +5,7 @@ class VPTextField extends StatelessWidget {
   const VPTextField(
       {Key? key,
       required TextEditingController controller,
-      required isObscured,
+      isObscured = false,
       icon,
       leadWidget,
       trailWidget,
@@ -74,7 +74,7 @@ class VPTextField extends StatelessWidget {
   }
 }
 
-class VpTextField extends StatefulWidget {
+/*class VpTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final String hint;
 
@@ -123,3 +123,4 @@ class _VpTextFieldState extends State<VpTextField> {
     );
   }
 }
+*/

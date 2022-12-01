@@ -8,8 +8,8 @@ import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 import 'package:vpatient/widgets/vp_textfield.dart';
 
-import 'forms/PainDescriptionForm.dart';
-import 'forms/SocialDemographicForm.dart';
+import 'forms/pain_description_form.dart';
+import 'forms/social_demographic_form.dart';
 
 class ChatSimulationScreen extends StatelessWidget {
   ChatSimulationScreen({super.key});
@@ -25,7 +25,7 @@ class ChatSimulationScreen extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.only(
-              bottom: 120,
+              bottom: 150,
             ),
             child: Obx(() => ScrollConfiguration(
                   behavior: const ScrollBehavior().copyWith(overscroll: false),
@@ -55,55 +55,63 @@ class ChatSimulationScreen extends StatelessWidget {
             ),
           ),
           SlidingUpPanel(
-              collapsed: Container(
-                alignment: Alignment.center,
-                child: const Divider(
-                  color: VPColors.primaryColor,
-                  thickness: 3,
-                  indent: 100,
-                  endIndent: 100,
-                ),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(24.0),
+              topRight: Radius.circular(24.0),
+            ),
+            collapsed: Container(
+              alignment: Alignment.center,
+              child: const Divider(
+                color: VPColors.primaryColor,
+                thickness: 3,
+                indent: 100,
+                endIndent: 100,
               ),
-              minHeight: Get.size.height * .05,
-              maxHeight: Get.size.height * .9,
-              panel: DefaultTabController(
-                length: 4,
-                child: Scaffold(
-                    body: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 26.0, horizontal: 16),
-                  child: Stack(
-                    children: const [
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: TabBar(
-                          indicatorColor: VPColors.primaryColor,
-                          tabs: [
-                            Tab(
-                              child: Text("Form-1"),
-                            ),
-                            Tab(
-                              child: Text("Form-2"),
-                            ),
-                            Tab(
-                              child: Text("Form-3"),
-                            ),
-                            Tab(
-                              child: Text("Form-4"),
-                            ),
-                          ],
-                        ),
-                      ),
-                      TabBarView(children: [
-                        SocialDemographicForm(),
-                        PainDescriptionForm(),
-                        Center(child: Text("Form-3 burada gözükecek.")),
-                        Center(child: Text("Form-4 burada gözükecek.")),
-                      ])
-                    ],
-                  ),
-                )),
-              )),
+            ),
+            minHeight: Get.size.height * .05,
+            maxHeight: Get.size.height * .9,
+            panel: _slideUpPanelBody(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding _slideUpPanelBody() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 26.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TabBar(
+            isScrollable: true,
+            controller: _controller.tabController,
+            indicatorColor: VPColors.primaryColor,
+            tabs: const [
+              Tab(
+                child: Text("Sosyo-Demografik Form"),
+              ),
+              Tab(
+                child: Text("Ağrı Niteliği Formu"),
+              ),
+              Tab(
+                child: Text("Form-3"),
+              ),
+              Tab(
+                child: Text("Form-4"),
+              ),
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
+                controller: _controller.tabController,
+                children: const [
+                  SocialDemographicForm(),
+                  PainDescriptionForm(),
+                  Center(child: Text("Form-3 burada gözükecek.")),
+                  Center(child: Text("Form-4 burada gözükecek.")),
+                ]),
+          )
         ],
       ),
     );

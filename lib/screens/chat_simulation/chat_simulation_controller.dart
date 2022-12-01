@@ -12,12 +12,13 @@ import 'package:http/http.dart' as http;
 
 class ChatSimulationController extends GetxController
     with GetSingleTickerProviderStateMixin {
+  late final TabController tabController;
   @override
   void onInit() async {
+    super.onInit();
+    tabController = TabController(length: 4, vsync: this);
     patient = await _getPatient();
     setAppBarText = patient?.name;
-
-    super.onInit();
   }
 
   final List<ChatMessage> _messages = [
