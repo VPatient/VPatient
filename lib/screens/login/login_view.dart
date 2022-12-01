@@ -8,9 +8,6 @@ import 'package:vpatient/widgets/vp_textfield.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
   final _controller = Get.put(LoginController());
 
   @override
@@ -37,13 +34,12 @@ class LoginScreen extends StatelessWidget {
               Column(
                 children: [
                   VPTextField(
-                      controller: _emailController,
+                      controller: _controller.emailController,
                       icon: Icons.mail,
-                      isObscured: false,
                       text: "E-mail",
                       keyboardType: TextInputType.emailAddress),
                   VPTextField(
-                    controller: _passwordController,
+                    controller: _controller.passwordController,
                     icon: Icons.lock,
                     isObscured: true,
                     text: "Şifre",
@@ -54,9 +50,7 @@ class LoginScreen extends StatelessWidget {
                       bgColor: VPColors.primaryColor,
                       textColor: Colors.white,
                       text: "Giriş Yap",
-                      function: () => _controller.signIn(
-                          _emailController.text.trim(),
-                          _passwordController.text.trim())),
+                      function: () => _controller.signIn()),
                   InkWell(
                     onTap: () => _controller.navigateToRegister(),
                     child: Padding(

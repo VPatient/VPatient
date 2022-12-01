@@ -8,12 +8,6 @@ import 'package:vpatient/widgets/vp_textfield.dart';
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _studentNumberController =
-      TextEditingController();
-  final TextEditingController _nameSurnameController = TextEditingController();
-
   final _controller = Get.put(RegisterController());
 
   @override
@@ -33,27 +27,24 @@ class RegisterScreen extends StatelessWidget {
             Column(
               children: [
                 VPTextField(
-                  controller: _emailController,
+                  controller: _controller.emailController,
                   icon: Icons.mail,
-                  isObscured: false,
                   text: "E-mail",
                   keyboardType: TextInputType.emailAddress,
                 ),
                 VPTextField(
-                  controller: _nameSurnameController,
+                  controller: _controller.nameSurnameController,
                   icon: Icons.person,
-                  isObscured: false,
                   text: "Ad Soyad",
                   keyboardType: TextInputType.text,
                 ),
                 VPTextField(
-                    controller: _studentNumberController,
+                    controller: _controller.studentNumberController,
                     icon: Icons.school,
-                    isObscured: false,
                     text: "Öğrenci Numarası",
                     keyboardType: TextInputType.number),
                 VPTextField(
-                  controller: _passwordController,
+                  controller: _controller.passwordController,
                   icon: Icons.lock,
                   isObscured: true,
                   text: "Şifre",
@@ -64,11 +55,7 @@ class RegisterScreen extends StatelessWidget {
                     bgColor: Get.theme.primaryColor,
                     textColor: Colors.white,
                     text: "Kayıt Ol",
-                    function: () => _controller.register(
-                        _emailController.text.trim(),
-                        _passwordController.text.trim(),
-                        _nameSurnameController.text.trim(),
-                        _studentNumberController.text.trim())),
+                    function: () => _controller.register()),
                 InkWell(
                   onTap: () => _controller.navigateToLogin(),
                   child: Padding(

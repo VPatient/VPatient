@@ -1,41 +1,55 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:vpatient/screens/chat_simulation/forms/util/FormConstants.dart';
-import 'package:vpatient/screens/chat_simulation/forms/util/FormWidgets.dart';
-import 'package:vpatient/widgets/vp_textfield.dart';
+import 'package:vpatient/style/colors.dart';
 
-class PainDescriptionForm extends StatelessWidget {
+class PainDescriptionForm extends StatefulWidget {
   const PainDescriptionForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const FormContent();
-  }
+  State<PainDescriptionForm> createState() => _PainDescriptionFormState();
 }
 
-class FormContent extends StatelessWidget {
-  const FormContent({Key? key}) : super(key: key);
+class _PainDescriptionFormState extends State<PainDescriptionForm> {
+  double _currentValue = 0;
+  final List<String> _descriptions = [
+    "Ağrım Yok",
+    "Çok az var",
+    "Biraz var",
+    "Oldukça fazla",
+    "Çok fazla",
+    "Dayanılacak gibi değil"
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.only(left: 2.0, top: 50.0, right: 2.0, bottom: 2.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 10),
-            const FormHeader(text: painDescriptionFormHeader),
-            PainDescriptor()
-          ],
-        ),
+      padding: const EdgeInsets.all(16),
+      alignment: Alignment.center,
+      child: Slider(
+        activeColor: VPColors.primaryColor,
+        label: _descriptions[(_currentValue.round() ~/ 2)],
+        value: _currentValue,
+        onChanged: (value) {
+          setState(() {
+            _currentValue = value;
+          });
+        },
+        divisions: 5,
+        min: 0,
+        max: 10,
       ),
     );
   }
 }
 
+
+/*class FormContent extends StatelessWidget {
+  const FormContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    
+  }
+}
 class PainDescriptor extends StatelessWidget {
   final Map<int, String> painLevelText = {};
 
@@ -49,7 +63,6 @@ class PainDescriptor extends StatelessWidget {
       10: 'Dayanılacak gibi değil',
     };
     painLevelText.addAll(painLevelTextEntries);
-
   }
 
   @override
@@ -79,14 +92,12 @@ class PainDescriptor extends StatelessWidget {
                       (index) => PainDescriptorItem(
                           painLevel: painLevelText.keys.elementAt(index),
                           painText: painLevelText.values.elementAt(index)),
-                  growable: false)
-              ),
+                      growable: false)),
             ),
           ],
         ));
   }
 }
-
 
 class PainDescriptorItem extends StatelessWidget {
   final int painLevel;
@@ -99,19 +110,18 @@ class PainDescriptorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(5),
-      child: Container(
-        height: 130,
-        padding: EdgeInsets.all(5),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(painLevel.toString()),
-            const SizedBox(height: 5),
-            Text(painText)
-          ],
-        ),
-      )
-    );
+        margin: EdgeInsets.all(5),
+        child: Container(
+          height: 130,
+          padding: EdgeInsets.all(5),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(painLevel.toString()),
+              const SizedBox(height: 5),
+              Text(painText)
+            ],
+          ),
+        ));
   }
-}
+}*/

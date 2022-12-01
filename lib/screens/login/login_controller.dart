@@ -7,13 +7,20 @@ import 'package:http/http.dart' as http;
 import 'package:vpatient/screens/home/home_view.dart';
 import 'package:vpatient/screens/register/register_view.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
+import 'package:vpatient/utils/vp_snackbar.dart';
 
 class LoginController extends GetxController {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   navigateToRegister() {
     Get.to(() => RegisterScreen());
   }
 
-  signIn(String email, String password) async {
+  signIn() async {
+    var email = emailController.text.trim();
+    var password = passwordController.text.trim();
+
     if (!_validate(email, password)) return;
 
     final response = await http.post(Uri.parse(APIEndpoints.loginEndpoint),
@@ -25,36 +32,23 @@ class LoginController extends GetxController {
 
     if (response.statusCode == 200) {
       await GetStorage().write("token", response.body);
-      Get.snackbar("Başarılı", "Giriş Başarılı.",
-          backgroundColor: Get.theme.primaryColor,
-          colorText: Colors.white,
-          icon: const Icon(Icons.done, color: Colors.white));
+
+      VPSnackbar.success("Giriş başarılı.");
+
       Get.to(() => HomeScreen());
     } else {
-      Get.snackbar("Hata", response.reasonPhrase!,
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-          icon: const Icon(
-            Icons.error,
-            color: Colors.white,
-          ));
+      VPSnackbar.error(response.body);
     }
   }
 
   bool _validate(email, password) {
     if (!GetUtils.isEmail(email)) {
-      Get.snackbar("Uyarı!", "Lütfen Geçerli bir email adresi giriniz.",
-          backgroundColor: Colors.amber,
-          colorText: Colors.white,
-          icon: const Icon(Icons.warning, color: Colors.white));
+      VPSnackbar.warning("Lütfen Geçerli bir email adresi giriniz.");
       return false;
     }
 
     if (GetUtils.isNull(password)) {
-      Get.snackbar("Uyarı!", "Şifre boş bırakılamaz.",
-          backgroundColor: Colors.amber,
-          colorText: Colors.white,
-          icon: const Icon(Icons.warning, color: Colors.white));
+      VPSnackbar.warning("Şifre boş bırakılamaz.");
       return false;
     }
 

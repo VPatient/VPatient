@@ -4,7 +4,6 @@ import 'package:vpatient/style/colors.dart';
 class Themes {
   static final ThemeData baseTheme = ThemeData(
       primaryColor: VPColors.primaryColor,
-      //bodyText1 for vp_textfield's text.
       textTheme: const TextTheme(
           button: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           bodyText1: TextStyle(
