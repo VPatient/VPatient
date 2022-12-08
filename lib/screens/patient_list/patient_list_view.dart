@@ -22,7 +22,7 @@ class PatientListScreen extends GetView {
             end: Alignment.bottomLeft,
             stops: const [0.1, 0.9],
             colors: [
-              Colors.blue[300]!.withOpacity(1),
+              Colors.deepPurple[300]!.withOpacity(1),
               Colors.purple[300]!.withOpacity(1)
             ],
           ),
@@ -47,7 +47,7 @@ class PatientListScreen extends GetView {
                             .toList(),
                         options: CarouselOptions(
                             enlargeCenterPage: true,
-                            enableInfiniteScroll: false,
+                            enableInfiniteScroll: true,
                             onPageChanged: (index, reason) =>
                                 _controller.setActivePage = index,
                             height: Get.size.height * .7),

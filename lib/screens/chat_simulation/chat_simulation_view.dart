@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/models/chat_message.dart';
 import 'package:vpatient/screens/chat_simulation/chat_simulation_controller.dart';
+import 'package:vpatient/screens/chat_simulation/forms/norton_pressure_ulcer_form.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
@@ -95,7 +96,7 @@ class ChatSimulationScreen extends StatelessWidget {
                 child: Text("Ağrı Niteliği Formu"),
               ),
               Tab(
-                child: Text("Form-3"),
+                child: Text("Norton Basınç Ülseri Formu"),
               ),
               Tab(
                 child: Text("Form-4"),
@@ -108,7 +109,7 @@ class ChatSimulationScreen extends StatelessWidget {
                 children: const [
                   SocialDemographicForm(),
                   PainDescriptionForm(),
-                  Center(child: Text("Form-3 burada gözükecek.")),
+                  NortonPressureUlcerForm(),
                   Center(child: Text("Form-4 burada gözükecek.")),
                 ]),
           )
