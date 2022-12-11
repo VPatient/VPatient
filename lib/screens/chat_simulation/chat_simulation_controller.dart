@@ -20,7 +20,7 @@ class ChatSimulationController extends GetxController
   @override
   void onInit() async {
     super.onInit();
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 7, vsync: this);
     patient = await _getPatient();
     messages = await _getScenario();
     fillCombobox();
@@ -179,8 +179,8 @@ class ChatSimulationController extends GetxController
 
   // function focus on last message on view
   void _jumpToLastMessage() {
-    listController.animateTo(listController.position.maxScrollExtent + 10000,
-        curve: Curves.easeOut, duration: const Duration(milliseconds: 300));
+    listController.animateTo(listController.position.maxScrollExtent + 150,
+        curve: Curves.linear, duration: const Duration(milliseconds: 300));
   }
 
   void _changeUI() {

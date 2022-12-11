@@ -3,7 +3,11 @@ import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/models/chat_message.dart';
 import 'package:vpatient/screens/chat_simulation/chat_simulation_controller.dart';
+import 'package:vpatient/screens/chat_simulation/forms/blood_sugar_trace_form.dart';
+import 'package:vpatient/screens/chat_simulation/forms/laboratory_results_form.dart';
+import 'package:vpatient/screens/chat_simulation/forms/medicines_form.dart';
 import 'package:vpatient/screens/chat_simulation/forms/norton_pressure_ulcer_form.dart';
+import 'package:vpatient/screens/chat_simulation/forms/vital_sign_form.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
@@ -100,19 +104,23 @@ class ChatSimulationScreen extends StatelessWidget {
                 child: Text("Norton Basınç Ülseri Formu"),
               ),
               Tab(
-                child: Text("Form-4"),
+                child: Text("Laboratuvar Sonuçları"),
               ),
+              Tab(child: Text("Kan Şekeri Takibi")),
+              Tab(child: Text("İlaçlar")),
+              Tab(child: Text("Yaşamsal Bulgular"))
             ],
           ),
           Expanded(
-            child: TabBarView(
-                controller: _controller.tabController,
-                children: const [
-                  SocialDemographicForm(),
-                  PainDescriptionForm(),
-                  NortonPressureUlcerForm(),
-                  Center(child: Text("Form-4 burada gözükecek.")),
-                ]),
+            child: TabBarView(controller: _controller.tabController, children: const [
+              SocialDemographicForm(),
+              PainDescriptionForm(),
+              NortonPressureUlcerForm(),
+              LaboratoryResultForm(),
+              BloodSugarTraceForm(),
+              MedicinesForm(),
+              VitalSignForm(),
+            ]),
           )
         ],
       ),

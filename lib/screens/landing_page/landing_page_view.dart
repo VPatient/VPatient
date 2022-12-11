@@ -53,7 +53,7 @@ class LandingPage extends StatelessWidget {
       },
       itemBuilder: (context, index) {
         return Padding(
-            padding: const EdgeInsets.only(top: 28, bottom: 64),
+            padding: const EdgeInsets.only(top: 56, bottom: 64),
             child: Image.asset("assets/images/landing_page/${index + 1}.png"));
       },
     );
