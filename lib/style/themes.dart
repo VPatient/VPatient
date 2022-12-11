@@ -4,6 +4,14 @@ import 'package:vpatient/style/colors.dart';
 class Themes {
   static final ThemeData baseTheme = ThemeData(
       primaryColor: VPColors.primaryColor,
+      dataTableTheme: const DataTableThemeData(
+          headingRowColor: MaterialStatePropertyAll(VPColors.secondaryColor),
+          headingTextStyle: TextStyle(
+              color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
+          dataTextStyle: TextStyle(
+              color: Colors.black87,
+              fontSize: 12,
+              fontWeight: FontWeight.w500)),
       textTheme: const TextTheme(
           button: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           bodyText1: TextStyle(
