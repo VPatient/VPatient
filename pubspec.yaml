@@ -40,4 +40,5 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/landing_page/
     - assets/images/icons/

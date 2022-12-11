@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vpatient/screens/chat_simulation/chat_simulation_view.dart';
 
 class LandingPageController extends GetxController {
-  final PageController controller = PageController(initialPage: 0);
+  final PageController pageController = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
 
-  final _isNextButtonVisible = true.obs;
+  final _isNextButtonVisible = false.obs;
+  final _isPreviousButtonVisible = true.obs;
 
-  get isNextButtonVisible => _isNextButtonVisible.value;
+  get previousButtonState => _isPreviousButtonVisible.value;
+  set setPreviousButtonState(bool value) =>
+      _isPreviousButtonVisible.value = value;
 
-  void changeNextButtonVisibility() {
-    _isNextButtonVisible.value = !_isNextButtonVisible.value;
-  }
+  get nextButtonState => _isNextButtonVisible.value;
+  set setNextButtonState(bool value) => _isNextButtonVisible.value = value;
 
   void navigateToNextPage() {
-    controller.nextPage(
+    if (_isNextButtonVisible.value) {
+      Get.off(() => ChatSimulationScreen());
+    }
+    pageController.nextPage(
         duration: const Duration(milliseconds: 500), curve: Curves.linear);
-    print(controller.toString());
   }
 
   void navigateToPreviousPage() {
-    controller.previousPage(
+    pageController.previousPage(
         duration: const Duration(milliseconds: 500), curve: Curves.linear);
-    print(controller.page);
   }
 }
