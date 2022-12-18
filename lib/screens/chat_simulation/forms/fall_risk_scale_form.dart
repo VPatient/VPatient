@@ -63,13 +63,77 @@ class _RiskFactorState extends State<RiskFactor> {
                   });
                 },
               ),
-            )
+            ),
+            Divider(),
+            DeterminingRiskLevel()
+            
 
 
           ],
         ));
   }
 }
+class DeterminingRiskLevel extends StatefulWidget {
+  const DeterminingRiskLevel({Key? key}) : super(key: key);
+
+  @override
+  State<DeterminingRiskLevel> createState() => _DeterminingRiskLevelState();
+}
+
+class _DeterminingRiskLevelState extends State<DeterminingRiskLevel> {
+  bool lowIsChecked = false;
+  bool highIsChecked = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Checkbox(
+                      checkColor: Colors.white,
+                      value: lowIsChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          lowIsChecked = value!;
+                        });
+                      }),
+                  Text("Düşük Risk")
+                ],
+              ),
+              Text("Toplam puan 5'in altında")
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Checkbox(
+                      checkColor: Colors.white,
+                      value: lowIsChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          lowIsChecked = value!;
+                        });
+                      }),
+                  Text("Yüksek Risk")
+                ],
+              ),
+              Text("Toplam puan 5 ve 5'in üstünde"),
+              Text("(Dört yapraklı yonca figürü kullanılabilir)")
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
 
 
 
