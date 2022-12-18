@@ -117,6 +117,7 @@ class ChatSimulationScreen extends StatelessWidget {
               Tab(child: Text("Yaşamsal Bulgular"))
             ],
           ),
+
           Expanded(
             child: TabBarView(
                 controller: _controller.tabController,
