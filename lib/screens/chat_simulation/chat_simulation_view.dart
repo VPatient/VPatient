@@ -107,7 +107,6 @@ class ChatSimulationScreen extends StatelessWidget {
               ),
               Tab(
                 child: Text("Laboratuvar Sonuçları"),
-
               ),
               Tab(
                 child: Text("Risk Ölçek Formu"),
@@ -125,8 +124,8 @@ class ChatSimulationScreen extends StatelessWidget {
                   SocialDemographicForm(),
                   PainDescriptionForm(),
                   NortonPressureUlcerForm(),
-                  FallRiskScaleForm(),
                   LaboratoryResultForm(),
+                  FallRiskScaleForm(),
                   BloodSugarTraceForm(),
                   MedicinesForm(),
                   VitalSignForm(),

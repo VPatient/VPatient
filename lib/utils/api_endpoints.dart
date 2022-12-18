@@ -1,5 +1,5 @@
 class APIEndpoints {
-  static const String _baseUrl = "http://server.ugurdindar.com:5000/";
+  static const String _baseUrl = "https://api.ugurdindar.com/";
 
   //example post
   static const String examplePostEndpoint =
