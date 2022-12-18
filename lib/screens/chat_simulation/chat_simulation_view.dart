@@ -13,8 +13,10 @@ import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 import 'package:vpatient/widgets/vp_textfield.dart';
 
+import 'forms/fall_risk_scale_form.dart';
 import 'forms/pain_description_form.dart';
 import 'forms/social_demographic_form.dart';
+import 'forms/pain_description_form.dart';
 
 class ChatSimulationScreen extends StatelessWidget {
   ChatSimulationScreen({super.key});
@@ -105,22 +107,30 @@ class ChatSimulationScreen extends StatelessWidget {
               ),
               Tab(
                 child: Text("Laboratuvar Sonuçları"),
+
+              ),
+              Tab(
+                child: Text("Risk Ölçek Formu"),
               ),
               Tab(child: Text("Kan Şekeri Takibi")),
               Tab(child: Text("İlaçlar")),
               Tab(child: Text("Yaşamsal Bulgular"))
             ],
           ),
+
           Expanded(
-            child: TabBarView(controller: _controller.tabController, children: const [
-              SocialDemographicForm(),
-              PainDescriptionForm(),
-              NortonPressureUlcerForm(),
-              LaboratoryResultForm(),
-              BloodSugarTraceForm(),
-              MedicinesForm(),
-              VitalSignForm(),
-            ]),
+            child: TabBarView(
+                controller: _controller.tabController,
+                children: const [
+                  SocialDemographicForm(),
+                  PainDescriptionForm(),
+                  NortonPressureUlcerForm(),
+                  FallRiskScaleForm(),
+                  LaboratoryResultForm(),
+                  BloodSugarTraceForm(),
+                  MedicinesForm(),
+                  VitalSignForm(),
+                ]),
           )
         ],
       ),
