@@ -20,7 +20,7 @@ class ChatSimulationController extends GetxController
   @override
   void onInit() async {
     super.onInit();
-    tabController = TabController(length: 7, vsync: this);
+    tabController = TabController(length: 8, vsync: this);
     patient = await _getPatient();
     messages = await _getScenario();
     fillCombobox();
