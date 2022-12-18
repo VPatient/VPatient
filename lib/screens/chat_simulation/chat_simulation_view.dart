@@ -3,13 +3,17 @@ import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/models/chat_message.dart';
 import 'package:vpatient/screens/chat_simulation/chat_simulation_controller.dart';
-import 'package:vpatient/screens/chat_simulation/forms/fall_risk_scale_form.dart';
+import 'package:vpatient/screens/chat_simulation/forms/blood_sugar_trace_form.dart';
+import 'package:vpatient/screens/chat_simulation/forms/laboratory_results_form.dart';
+import 'package:vpatient/screens/chat_simulation/forms/medicines_form.dart';
 import 'package:vpatient/screens/chat_simulation/forms/norton_pressure_ulcer_form.dart';
+import 'package:vpatient/screens/chat_simulation/forms/vital_sign_form.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 import 'package:vpatient/widgets/vp_textfield.dart';
 
+import 'forms/fall_risk_scale_form.dart';
 import 'forms/pain_description_form.dart';
 import 'forms/social_demographic_form.dart';
 import 'forms/pain_description_form.dart';
@@ -58,6 +62,7 @@ class ChatSimulationScreen extends StatelessWidget {
             ),
           ),
           SlidingUpPanel(
+            controller: _controller.panelController,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(24.0),
               topRight: Radius.circular(24.0),
@@ -101,8 +106,15 @@ class ChatSimulationScreen extends StatelessWidget {
                 child: Text("Norton Basınç Ülseri Formu"),
               ),
               Tab(
+                child: Text("Laboratuvar Sonuçları"),
+
+              ),
+              Tab(
                 child: Text("Risk Ölçek Formu"),
               ),
+              Tab(child: Text("Kan Şekeri Takibi")),
+              Tab(child: Text("İlaçlar")),
+              Tab(child: Text("Yaşamsal Bulgular"))
             ],
           ),
           Expanded(
@@ -113,6 +125,10 @@ class ChatSimulationScreen extends StatelessWidget {
                   PainDescriptionForm(),
                   NortonPressureUlcerForm(),
                   FallRiskScaleForm(),
+                  LaboratoryResultForm(),
+                  BloodSugarTraceForm(),
+                  MedicinesForm(),
+                  VitalSignForm(),
                 ]),
           )
         ],
@@ -120,51 +136,55 @@ class ChatSimulationScreen extends StatelessWidget {
     );
   }
 
-  FloatingActionButton _sendButton() {
-    return FloatingActionButton(
-      onPressed: () => _controller.sendMessage(),
-      backgroundColor: VPColors.primaryColor,
-      elevation: 0,
-      child: const Icon(
-        Icons.send,
-        color: Colors.white,
-      ),
-    );
+  _sendButton() {
+    return Obx(() => FloatingActionButton(
+          onPressed: _controller.sendMessageStatus
+              ? () => _controller.sendMessage()
+              : null,
+          backgroundColor: _controller.sendMessageStatus
+              ? VPColors.primaryColor
+              : Colors.grey,
+          elevation: 0,
+          child: const Icon(
+            Icons.send,
+            color: Colors.white,
+          ),
+        ));
   }
 
-  PopupMenuButton<String> _dropDownMenu() {
-    return PopupMenuButton<String>(
-      color: Colors.white,
-      tooltip: "Hastayla iletişime geçmek için tıklayın.",
-      elevation: 0,
-      constraints: BoxConstraints(minWidth: Get.size.width),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      offset: const Offset(0, 0),
-      onSelected: (value) => _controller.chatController.text = value,
-      icon: const Icon(Icons.arrow_circle_up,
-          color: VPColors.primaryColor, size: 26),
-      itemBuilder: (context) {
-        return const <String>[
-          "Uzun cevaplara bir örnek olarak bu cevabı ekledik. Uzun cevaplar bu şekilde gözükecek o yüzden yazıyı olabildiğince uzun tutmaya çalışıyorum :D",
-          "Kısa Cevap",
-          "Uzun cevaplara bir örnek olarak bu cevabı ekledik. Uzun cevaplar bu şekilde gözükecek o yüzden yazıyı olabildiğince uzun tutmaya çalışıyorum :D",
-          "Kısa Cevap"
-        ]
-            .map(
-              (e) => PopupMenuItem<String>(
-                  value: e,
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    width: double.infinity,
-                    child: Text(e,
-                        overflow: TextOverflow.visible,
-                        style: Get.theme.textTheme.caption
-                            ?.copyWith(color: VPColors.primaryColor)),
-                  )),
-            )
-            .toList();
-      },
-    );
+  Widget _dropDownMenu() {
+    return Obx(() => PopupMenuButton<ChatMessage>(
+          enabled: _controller.sendMessageStatus,
+          color: Colors.white,
+          tooltip: "Hastayla iletişime geçmek için tıklayın.",
+          elevation: 0,
+          constraints: BoxConstraints(minWidth: Get.size.width),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          offset: const Offset(0, 0),
+          onSelected: (value) => _controller.chatController.text = value.text,
+          icon: Icon(Icons.arrow_circle_up,
+              color: _controller.sendMessageStatus
+                  ? VPColors.primaryColor
+                  : Colors.grey,
+              size: 26),
+          itemBuilder: (context) {
+            return _controller.comboBoxMessages
+                .map(
+                  (e) => PopupMenuItem<ChatMessage>(
+                      value: e,
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        width: double.infinity,
+                        child: Text(e.text,
+                            overflow: TextOverflow.visible,
+                            style: Get.theme.textTheme.caption
+                                ?.copyWith(color: VPColors.primaryColor)),
+                      )),
+                )
+                .toList();
+          },
+        ));
   }
 
   AppBar _chatScreenAppBar() {
@@ -206,7 +226,7 @@ class ChatSimulationScreen extends StatelessWidget {
                       ? VPColors.primaryColor
                       : Colors.white),
               width: Get.size.width / 2,
-              child: Text(message.message,
+              child: Text(message.text,
                   style: Get.textTheme.caption?.copyWith(
                       color: message.sender == MessageSender.patient
                           ? Colors.white
