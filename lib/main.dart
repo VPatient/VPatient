@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/screens/home/home_view.dart';
+import 'package:vpatient/screens/slide_up_panel/slide_up_panel_view.dart';
 import 'package:vpatient/style/themes.dart';
 
 import 'firebase_options.dart';
@@ -37,6 +38,11 @@ class MyApp extends StatelessWidget {
       title: 'Sanal Hastam',
       theme: Themes.baseTheme,
       home: GetStorage().hasData("token") ? HomeScreen() : LoginScreen(),
+      builder: (context, child) {
+        return Stack(
+          children: [child!, SlideUpPanelView()],
+        );
+      },
     );
   }
 }

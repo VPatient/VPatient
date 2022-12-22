@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/models/chat_message.dart';
 import 'package:vpatient/models/patient.dart';
+import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 import 'package:vpatient/utils/message_sender.dart';
@@ -38,9 +38,10 @@ class ChatSimulationController extends GetxController
   Patient? patient;
   final TextEditingController chatController = TextEditingController();
   final ScrollController listController = ScrollController();
-  final PanelController panelController = PanelController();
+  //final PanelController panelController = PanelController();
   final _sendMessageDisabled = true.obs;
-
+  final SlideUpPanelController _panelController =
+      Get.put(SlideUpPanelController());
   get sendMessageStatus => _sendMessageDisabled.value;
 
   get patientImage async => patient == null
@@ -99,6 +100,10 @@ class ChatSimulationController extends GetxController
     checkNextMessage();
   }
 
+  void openPanel() {
+    _panelController.openPanel();
+  }
+
   void checkNextMessage() {
     var message =
         messages.where((element) => element.sequence == messageSequence).first;
@@ -106,7 +111,7 @@ class ChatSimulationController extends GetxController
     if (message.action) {
       showDialog(message);
       // TODO: open proper form according to action message.
-      panelController.open();
+      _panelController.openPanel();
       tabController.animateTo(2,
           curve: Curves.decelerate,
           duration: const Duration(milliseconds: 500));
