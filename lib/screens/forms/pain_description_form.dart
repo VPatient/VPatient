@@ -15,21 +15,23 @@ class PainDescriptionFormContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        SizedBox(height: 50),
-        Text("Ağrının Şiddeti"),
-        SizedBox(height: 5),
-        PainLevel(),
-        Divider(),
-        SizedBox(height: 15),
-        Text("Ağrının Niteliği"),
-        NatureOfPain(),
-        Divider(),
-        SizedBox(height: 15),
-        Text("Ağrının Sürekliliği"),
-        PaintType()
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: const [
+          SizedBox(height: 50),
+          Text("Ağrının Şiddeti"),
+          SizedBox(height: 5),
+          PainLevel(),
+          Divider(),
+          SizedBox(height: 15),
+          Text("Ağrının Niteliği"),
+          NatureOfPain(),
+          Divider(),
+          SizedBox(height: 15),
+          Text("Ağrının Sürekliliği"),
+          PaintType()
+        ],
+      ),
     );
   }
 }

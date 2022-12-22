@@ -57,6 +57,9 @@ class HomeScreen extends StatelessWidget {
               Get.to(() => LandingPage());
             },
           ),
+          ElevatedButton(
+              child: const Text("Formlar"),
+              onPressed: () => _controller.openPanel()),
         ],
       )),
     );
