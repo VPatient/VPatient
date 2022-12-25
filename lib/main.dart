@@ -39,8 +39,10 @@ class MyApp extends StatelessWidget {
       theme: Themes.baseTheme,
       home: GetStorage().hasData("token") ? HomeScreen() : LoginScreen(),
       builder: (context, child) {
-        return Stack(
-          children: [child!, SlideUpPanelView()],
+        return Navigator(
+          onGenerateRoute: (_) => MaterialPageRoute(builder: (context) {
+            return Stack(children: [child!, SlideUpPanelView()]);
+          }),
         );
       },
     );
