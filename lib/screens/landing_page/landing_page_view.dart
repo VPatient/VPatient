@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vpatient/screens/landing_page/landing_page_controller.dart';
-import 'package:vpatient/style/colors.dart';
-import 'package:vpatient/widgets/vp_button.dart';
 
 class LandingPage extends StatelessWidget {
   LandingPage({Key? key}) : super(key: key);

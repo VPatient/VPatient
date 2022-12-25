@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/models/blood_sugar_trace.dart';
-import 'package:vpatient/models/laboratory_result.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
@@ -39,7 +38,9 @@ class BloodSugarTraceForm extends StatelessWidget {
         future: getResults(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Center(child: VPCircularProgressIndicator(color: VPColors.primaryColor));
+            return const Center(
+                child:
+                    VPCircularProgressIndicator(color: VPColors.primaryColor));
           }
           return SingleChildScrollView(
             child: DataTable(

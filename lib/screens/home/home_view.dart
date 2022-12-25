@@ -5,6 +5,7 @@ import 'package:vpatient/screens/chat_simulation/chat_simulation_view.dart';
 import 'package:vpatient/screens/home/home_controller.dart';
 import 'package:vpatient/screens/landing_page/landing_page_view.dart';
 import 'package:vpatient/screens/login/login_view.dart';
+import 'package:vpatient/screens/patient_diagnosis/patient_diagnosis_view.dart';
 import 'package:vpatient/screens/patient_list/patient_list_view.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -56,6 +57,15 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Get.to(() => LandingPage());
             },
+          ),
+          ElevatedButton(
+              child: const Text("Formlar"),
+              onPressed: () => _controller.openPanel()),
+          ElevatedButton(
+              child: const Text("Hasta Tanısı"),
+              onPressed: () => {
+                Get.to(() => PatientDiagnosisScreen())
+              }
           ),
         ],
       )),
