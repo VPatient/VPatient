@@ -14,7 +14,7 @@ class _NortonPressureUlcerFormState extends State<NortonPressureUlcerForm> {
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
-  
+
   final List<String> _physicalConditions = ['İyi', 'Orta', 'Kötü', 'Çok Kötü'];
   String? physicalConditionValue;
 
@@ -70,8 +70,8 @@ class _NortonPressureUlcerFormState extends State<NortonPressureUlcerForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Text(
-                'Fiziksel Durum', 
+              Text(
+                'Fiziksel Durum',
                 style: _labelStyle,
               ),
               _renderDropdown(physicalConditionValue, _physicalConditions,
@@ -88,8 +88,10 @@ class _NortonPressureUlcerFormState extends State<NortonPressureUlcerForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Text('Mental Durum',
-                style: _labelStyle,),
+              Text(
+                'Mental Durum',
+                style: _labelStyle,
+              ),
               _renderDropdown(mentalConditionValue, _mentalConditions, (value) {
                 setState(() {
                   mentalConditionValue = value;
@@ -103,8 +105,10 @@ class _NortonPressureUlcerFormState extends State<NortonPressureUlcerForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Text('Aktivite',
-                style: _labelStyle,),
+              Text(
+                'Aktivite',
+                style: _labelStyle,
+              ),
               _renderDropdown(activityConditionValue, _activityConditions,
                   (value) {
                 setState(() {
@@ -119,8 +123,10 @@ class _NortonPressureUlcerFormState extends State<NortonPressureUlcerForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Text('Hareketlilik',
-                style: _labelStyle,),
+              Text(
+                'Hareketlilik',
+                style: _labelStyle,
+              ),
               _renderDropdown(movementConditionValue, _movementConditions,
                   (value) {
                 setState(() {
@@ -135,7 +141,10 @@ class _NortonPressureUlcerFormState extends State<NortonPressureUlcerForm> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('İnkontinans', style: _labelStyle,),
+              Text(
+                'İnkontinans',
+                style: _labelStyle,
+              ),
               _renderDropdown(
                   incontinenceConditionValue, _incontinenceConditions, (value) {
                 setState(() {
@@ -152,9 +161,9 @@ class _NortonPressureUlcerFormState extends State<NortonPressureUlcerForm> {
   Widget _renderDropdown(
       String? value, List<String> items, void Function(String?)? onChanged) {
     return DropdownButton(
-      icon: const Icon(Icons.arrow_drop_down, color: VPColors.primaryColor),
-      itemHeight: 65,
-      underline: Container(height: 2, color: VPColors.primaryColor),
+        icon: const Icon(Icons.arrow_drop_down, color: VPColors.primaryColor),
+        itemHeight: 65,
+        underline: Container(height: 2, color: VPColors.primaryColor),
         value: value,
         items: items.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(

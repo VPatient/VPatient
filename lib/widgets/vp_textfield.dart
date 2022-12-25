@@ -74,53 +74,58 @@ class VPTextField extends StatelessWidget {
   }
 }
 
-/*class VpTextField extends StatefulWidget {
-  final TextInputType keyboardType;
-  final String hint;
+class VPTextFieldOutline extends StatelessWidget {
+  const VPTextFieldOutline(
+      {Key? key,
+      required TextEditingController controller,
+      isObscured = false,
+      icon,
+      enabled = true,
+      maxLines = 1,
+      required text,
+      required keyboardType})
+      : _controller = controller,
+        _isObscured = isObscured,
+        _isEnabled = enabled,
+        _text = text,
+        _icon = icon,
+        _maxLines = maxLines,
+        _keyboardType = keyboardType,
+        super(key: key);
 
-  const VpTextField({Key? key, required this.hint, required this.keyboardType})
-      : super(key: key);
-
-  @override
-  State<VpTextField> createState() => _VpTextFieldState();
-}
-
-class _VpTextFieldState extends State<VpTextField> {
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  final TextEditingController _controller;
+  final bool _isObscured;
+  final String _text;
+  final IconData? _icon;
+  final TextInputType _keyboardType;
+  final bool _isEnabled;
+  final int _maxLines;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(50))),
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: TextField(
-        keyboardType: widget.keyboardType,
+        maxLines: _maxLines,
+        textAlign: TextAlign.start,
+        enabled: _isEnabled,
+        keyboardType: _keyboardType,
         style: Theme.of(context).textTheme.bodyText1,
-        obscureText: false,
+        obscureText: _isObscured,
         controller: _controller,
         cursorColor: VPColors.primaryColor,
         decoration: InputDecoration(
-            border: InputBorder.none,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-            hintText: widget.hint,
-            hintStyle: Theme.of(context).textTheme.bodyText1),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25),
+              borderSide: const BorderSide(color: VPColors.primaryColor)),
+          floatingLabelStyle: const TextStyle(color: VPColors.primaryColor),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+          icon: Icon(_icon,
+              color: VPColors.primaryColor, size: _icon == null ? 0 : 24),
+          labelText: _text,
+        ),
       ),
     );
   }
 }
-*/
