@@ -6,7 +6,7 @@ import 'package:vpatient/models/medicine.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
-import 'package:vpatient/utils/vp_snackbar.dart';
+import 'package:vpatient/widgets/vp_snackbar.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 
 class MedicinesForm extends StatelessWidget {
@@ -38,7 +38,9 @@ class MedicinesForm extends StatelessWidget {
         future: getResults(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Center(child: VPCircularProgressIndicator(color: VPColors.primaryColor));
+            return const Center(
+                child:
+                    VPCircularProgressIndicator(color: VPColors.primaryColor));
           }
           return SingleChildScrollView(
             child: DataTable(
@@ -56,7 +58,9 @@ class MedicinesForm extends StatelessWidget {
                   cells: [
                     DataCell(Text(snapshot.data![index].name)),
                     DataCell(Text(snapshot.data![index].dose)),
-                    DataCell(Text(snapshot.data![index].time),),
+                    DataCell(
+                      Text(snapshot.data![index].time),
+                    ),
                     DataCell(Text(snapshot.data![index].reason)),
                     DataCell(Text(snapshot.data![index].duration)),
                   ],

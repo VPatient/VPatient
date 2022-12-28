@@ -9,7 +9,7 @@ import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 import 'package:vpatient/utils/secrets.dart';
-import 'package:vpatient/utils/vp_snackbar.dart';
+import 'package:vpatient/widgets/vp_snackbar.dart';
 
 class PatientDiagnosisController extends GetxController {
   get diagnosis => _getDiagnosis();

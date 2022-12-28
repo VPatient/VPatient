@@ -21,7 +21,7 @@ class ChatSimulationScreen extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.only(
-              bottom: 150,
+              bottom: 100,
             ),
             child: Obx(() => ScrollConfiguration(
                   behavior: const ScrollBehavior().copyWith(overscroll: false),

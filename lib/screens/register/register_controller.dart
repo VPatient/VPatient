@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:vpatient/screens/login/login_view.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
-import 'package:vpatient/utils/vp_snackbar.dart';
+import 'package:vpatient/widgets/vp_snackbar.dart';
 
 class RegisterController extends GetxController {
   final TextEditingController emailController = TextEditingController();

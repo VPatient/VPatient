@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vpatient/screens/forms/social_demographic_form/social_demographic_form_controller.dart';
 import 'package:vpatient/style/colors.dart';
+import 'package:vpatient/widgets/vp_button.dart';
 
 import 'package:vpatient/widgets/vp_textfield.dart';
 
@@ -37,11 +38,6 @@ class SocialDemographicForm extends StatelessWidget {
               _renderChildNumber(),
               _renderLabel("Sosyal Güvence"),
               _renderInsurance(),
-              /*VPTextFieldOutline(
-                text: "Irk/Din",
-                keyboardType: TextInputType.text,
-                controller: TextEditingController(),
-              ),*/
               _renderLabel("Refakatçisi"),
               _renderCompanion(),
               _renderLabel("Kan Grubu"),
@@ -55,7 +51,19 @@ class SocialDemographicForm extends StatelessWidget {
               _renderLabel("Kilo (kg)"),
               _renderWeight(),
               _renderLabel("Vücut Kitle İndeksi"),
-              _renderBMI()
+              _renderBMI(),
+              Obx(() => Visibility(
+                    visible: _controller.isCalled,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: VPButton(
+                          bgColor: VPColors.primaryColor,
+                          text: "Gönder",
+                          textColor: Colors.white,
+                          function: () => _controller.validate(),
+                          width: .5),
+                    ),
+                  ))
             ],
           ),
         ),
@@ -162,11 +170,24 @@ class SocialDemographicForm extends StatelessWidget {
             onChanged: (value) => _controller.setCompanion = value!)));
   }
 
-  VPTextFieldOutline _renderInsurance() {
-    return VPTextFieldOutline(
-        text: "",
-        keyboardType: TextInputType.text,
-        controller: _controller.insuranceController);
+  Padding _renderInsurance() {
+    return Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 8),
+        child: Obx(() => DropdownButton<String>(
+            isExpanded: true,
+            icon:
+                const Icon(Icons.arrow_drop_down, color: VPColors.primaryColor),
+            itemHeight: 65,
+            underline: Container(height: 2, color: VPColors.primaryColor),
+            value: _controller.insurance,
+            items: _controller.insuranceList
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: SizedBox(width: 150, child: Text(value)),
+              );
+            }).toList(),
+            onChanged: (value) => _controller.setInsurance = value!)));
   }
 
   VPTextFieldOutline _renderChildNumber() {
