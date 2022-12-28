@@ -6,7 +6,7 @@ import 'package:vpatient/models/blood_sugar_trace.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
-import 'package:vpatient/utils/vp_snackbar.dart';
+import 'package:vpatient/widgets/vp_snackbar.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 
 class BloodSugarTraceForm extends StatelessWidget {

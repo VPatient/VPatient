@@ -6,7 +6,7 @@ import 'package:vpatient/models/vital_sign.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
-import 'package:vpatient/utils/vp_snackbar.dart';
+import 'package:vpatient/widgets/vp_snackbar.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 
 class VitalSignForm extends StatelessWidget {
@@ -38,7 +38,9 @@ class VitalSignForm extends StatelessWidget {
         future: getResults(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Center(child: VPCircularProgressIndicator(color: VPColors.primaryColor));
+            return const Center(
+                child:
+                    VPCircularProgressIndicator(color: VPColors.primaryColor));
           }
           return SingleChildScrollView(
             child: DataTable(
@@ -54,11 +56,16 @@ class VitalSignForm extends StatelessWidget {
                 snapshot.data!.length,
                 (index) => DataRow(
                   cells: [
-                    DataCell(Center(child: Text("${snapshot.data![index].date.hour}:00"))),
-                    DataCell(Center(child: Text(snapshot.data![index].bloodPressure))),
-                    DataCell(Center(child: Text(snapshot.data![index].pulseOverMinute))),
-                    DataCell(Center(child: Text(snapshot.data![index].breathOverMinute))),
-                    DataCell(Center(child: Text(snapshot.data![index].bodyTemperature))),
+                    DataCell(Center(
+                        child: Text("${snapshot.data![index].date.hour}:00"))),
+                    DataCell(Center(
+                        child: Text(snapshot.data![index].bloodPressure))),
+                    DataCell(Center(
+                        child: Text(snapshot.data![index].pulseOverMinute))),
+                    DataCell(Center(
+                        child: Text(snapshot.data![index].breathOverMinute))),
+                    DataCell(Center(
+                        child: Text(snapshot.data![index].bodyTemperature))),
                   ],
                 ),
               ),

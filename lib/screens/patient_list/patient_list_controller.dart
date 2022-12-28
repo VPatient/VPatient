@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:vpatient/models/patient.dart';
 import 'package:vpatient/screens/landing_page/landing_page_view.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
-import 'package:vpatient/utils/vp_snackbar.dart';
+import 'package:vpatient/widgets/vp_snackbar.dart';
 
 class PatientListController extends GetxController {
   final _activePage = 0.obs;

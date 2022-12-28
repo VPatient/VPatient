@@ -5,26 +5,25 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/models/chat_message.dart';
 import 'package:vpatient/models/patient.dart';
+import 'package:vpatient/models/user.dart';
+import 'package:vpatient/screens/patient_diagnosis/patient_diagnosis_view.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
+import 'package:vpatient/utils/forms.dart';
 import 'package:vpatient/utils/message_sender.dart';
-import 'package:vpatient/utils/vp_snackbar.dart';
+import 'package:vpatient/utils/user_helper.dart';
+import 'package:vpatient/widgets/vp_snackbar.dart';
 
-// TODO: validate all forms then navigate to Disease Diagnosis page.
-
-class ChatSimulationController extends GetxController
-    with GetSingleTickerProviderStateMixin {
-  late final TabController tabController;
-
+class ChatSimulationController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    tabController = TabController(length: 8, vsync: this);
     patient = await _getPatient();
     messages = await _getScenario();
     fillCombobox();
     setAppBarText = patient?.name;
+    user = UserHelper.getUser();
   }
 
   //message variables
@@ -38,10 +37,13 @@ class ChatSimulationController extends GetxController
   Patient? patient;
   final TextEditingController chatController = TextEditingController();
   final ScrollController listController = ScrollController();
-  //final PanelController panelController = PanelController();
   final _sendMessageDisabled = true.obs;
   final SlideUpPanelController _panelController =
       Get.put(SlideUpPanelController());
+  User? user;
+  bool isSocialDemographicFormFilled = false;
+  Forms? lastForm;
+
   get sendMessageStatus => _sendMessageDisabled.value;
 
   get patientImage async => patient == null
@@ -57,6 +59,10 @@ class ChatSimulationController extends GetxController
 
   // function to fill nurse answer combo box every time
   void fillCombobox() {
+    if (lastForm != null && !_panelController.validateForm(lastForm!)) {
+      comboBoxMessages.clear();
+    }
+
     if (comboBoxMessages.isNotEmpty) comboBoxMessages.clear();
 
     comboBoxMessages.addAll(
@@ -74,6 +80,11 @@ class ChatSimulationController extends GetxController
 
   // function to send nurse's messages
   void sendMessage() {
+    if (!_panelController.isFormValidated) {
+      VPSnackbar.warning("Lütfen ilgili formu doldurunuz.");
+      return;
+    }
+
     if (chatController.text.isEmpty) {
       VPSnackbar.warning("Lütfen bir mesaj seçiniz.");
       return;
@@ -81,10 +92,17 @@ class ChatSimulationController extends GetxController
 
     var message =
         messages.where((element) => element.text == chatController.text).first;
+
     if (message.sequence != messageSequence) {
       VPSnackbar.warning("Lütfen hastayla doğru şekilde iletişime geçin.");
       return;
     }
+
+    if (lastForm != null) {
+      lastForm = null;
+      _panelController.form = null;
+    }
+
     _getNurseMessage(message: message);
   }
 
@@ -109,19 +127,48 @@ class ChatSimulationController extends GetxController
         messages.where((element) => element.sequence == messageSequence).first;
 
     if (message.action) {
-      showDialog(message);
-      // TODO: open proper form according to action message.
-      _panelController.openPanel();
-      tabController.animateTo(2,
+      openPanel();
+      _panelController.tabController.animateTo(_findTabWithAction(message.text),
           curve: Curves.decelerate,
           duration: const Duration(milliseconds: 500));
+
       messageSequence++;
-      checkNextMessage();
+      fillCombobox();
+      return;
+      //checkNextMessage();
     }
 
     if (message.sender == MessageSender.patient) {
       changeSendMessageState();
       _getPatientsMessage();
+    }
+  }
+
+  int _findTabWithAction(String actionName) {
+    switch (actionName) {
+      case "{Medicines}":
+        lastForm = Forms.medicinesForm;
+        return 6;
+      case "{Demografic}":
+        lastForm = Forms.socialDemographicForm;
+        return 0;
+      case "{VitalSign}":
+        lastForm = Forms.vitalSignForm;
+        return 7;
+      case "{Laboratory}":
+        lastForm = Forms.laboratoryResultsForm;
+        return 3;
+      case "{FallRiskForm}":
+        lastForm = Forms.fallRiskForm;
+        return 4;
+      case "{NortonPressureUlcerForm}":
+        lastForm = Forms.nortonPressureUlcerForm;
+        return 1;
+      case "{DiagnosisScreen}":
+        Get.off(() => PatientDiagnosisScreen());
+        return 0;
+      default:
+        return -1;
     }
   }
 
@@ -184,7 +231,7 @@ class ChatSimulationController extends GetxController
 
   // function focus on last message on view
   void _jumpToLastMessage() {
-    listController.animateTo(listController.position.maxScrollExtent + 150,
+    listController.animateTo(listController.position.maxScrollExtent + 15000,
         curve: Curves.linear, duration: const Duration(milliseconds: 300));
   }
 
