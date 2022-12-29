@@ -44,10 +44,10 @@ class LandingPage extends StatelessWidget {
   PageView _renderPages() {
     return PageView.builder(
       controller: _controller.pageController,
-      itemCount: 7,
+      itemCount: 6,
       onPageChanged: (value) {
         _controller.setPreviousButtonState = value == 0;
-        _controller.setNextButtonState = value == 6;
+        _controller.setNextButtonState = value == 5;
       },
       itemBuilder: (context, index) {
         return Padding(
