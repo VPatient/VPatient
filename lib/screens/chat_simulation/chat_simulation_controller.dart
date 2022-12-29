@@ -184,7 +184,7 @@ class ChatSimulationController extends GetxController {
         lastForm = Forms.nortonPressureUlcerForm;
         return 1;
       case "{PainDescriptionForm}":
-        lastForm = Forms.nortonPressureUlcerForm;
+        lastForm = Forms.painDescriptionForm;
         return 2;
       case "{FallRiskForm}":
         lastForm = Forms.fallRiskForm;
