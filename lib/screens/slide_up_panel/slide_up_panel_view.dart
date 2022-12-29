@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:vpatient/screens/forms/blood_sugar_trace_form.dart';
+import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_form.dart';
 import 'package:vpatient/screens/forms/fall_risk_scale_form.dart';
 import 'package:vpatient/screens/forms/laboratory_results_form.dart';
 import 'package:vpatient/screens/forms/medicines_form/medicines_form.dart';

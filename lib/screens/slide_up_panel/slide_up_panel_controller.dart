@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/abstractions/base_form.dart';
+import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_form_controller.dart';
 import 'package:vpatient/screens/forms/medicines_form/medicines_form_controller.dart';
 import 'package:vpatient/screens/forms/social_demographic_form/social_demographic_form_controller.dart';
 import 'package:vpatient/screens/forms/vital_sign_form/vital_sign_form_controller.dart';
@@ -22,6 +23,9 @@ class SlideUpPanelController extends GetxController
   final _medicinesFormController = Get.put(MedicinesFormController());
 
   final _vitalSignFormController = Get.put(VitalSignFormController());
+
+  final _bloodSugarTraceFormController =
+      Get.put(BloodSugarTraceFormController());
 
   BaseForm? form;
 
@@ -48,6 +52,9 @@ class SlideUpPanelController extends GetxController
         break;
       case Forms.vitalSignForm:
         form = _vitalSignFormController;
+        break;
+      case Forms.bloodSugarTraceForm:
+        form = _bloodSugarTraceFormController;
         break;
     }
 
