@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vpatient/screens/forms/medicines_form/medicines_form_controller.dart';
+import 'package:vpatient/screens/forms/vital_sign_form/vital_sign_form_controller.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 
-class MedicinesForm extends StatelessWidget {
-  MedicinesForm({super.key});
+class VitalSignForm extends StatelessWidget {
+  VitalSignForm({super.key});
 
-  final _controller = Get.put(MedicinesFormController());
+  final _controller = Get.put(VitalSignFormController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,29 +22,31 @@ class MedicinesForm extends StatelessWidget {
                     VPCircularProgressIndicator(color: VPColors.primaryColor));
           }
           return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               DataTable(
                 columnSpacing: 20,
                 columns: const [
-                  DataColumn(label: Text("Adı")),
-                  DataColumn(label: Text("Dozu")),
-                  DataColumn(label: Text("Saati")),
-                  DataColumn(label: Text("Nedeni")),
-                  DataColumn(label: Text("Süresi"))
+                  DataColumn(label: Text("Tarih")),
+                  DataColumn(label: Text("Kan\nBasıncı")),
+                  DataColumn(label: Text("Nabız/dk")),
+                  DataColumn(label: Text("Solunum/dk")),
+                  DataColumn(label: Text("Vücut\nSıcaklığı")),
                 ],
                 rows: List<DataRow>.generate(
                   snapshot.data!.length,
                   (index) => DataRow(
                     cells: [
-                      DataCell(Text(snapshot.data![index].name)),
-                      DataCell(Text(snapshot.data![index].dose)),
-                      DataCell(
-                        Text(snapshot.data![index].time),
-                      ),
-                      DataCell(Text(snapshot.data![index].reason)),
-                      DataCell(Text(snapshot.data![index].duration)),
+                      DataCell(Center(
+                          child:
+                              Text("${snapshot.data![index].date.hour}:00"))),
+                      DataCell(Center(
+                          child: Text(snapshot.data![index].bloodPressure))),
+                      DataCell(Center(
+                          child: Text(snapshot.data![index].pulseOverMinute))),
+                      DataCell(Center(
+                          child: Text(snapshot.data![index].breathOverMinute))),
+                      DataCell(Center(
+                          child: Text(snapshot.data![index].bodyTemperature))),
                     ],
                   ),
                 ),

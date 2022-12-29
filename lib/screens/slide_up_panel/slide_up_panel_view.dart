@@ -8,7 +8,7 @@ import 'package:vpatient/screens/forms/medicines_form/medicines_form.dart';
 import 'package:vpatient/screens/forms/norton_pressure_ulcer_form.dart';
 import 'package:vpatient/screens/forms/pain_description_form.dart';
 import 'package:vpatient/screens/forms/social_demographic_form/social_demographic_form.dart';
-import 'package:vpatient/screens/forms/vital_sign_form.dart';
+import 'package:vpatient/screens/forms/vital_sign_form/vital_sign_form.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/style/colors.dart';
 
