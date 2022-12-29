@@ -58,8 +58,6 @@ class SlideUpPanelController extends GetxController
       case Forms.painDescriptionForm:
        form = _painDescriptionFormController;
         break;
-      default:
-        form = _socialDemographicFormController;
       case Forms.medicinesForm:
         form = _medicinesFormController;
         break;
@@ -72,6 +70,8 @@ class SlideUpPanelController extends GetxController
       case Forms.laboratoryResultsForm:
         form = _laboratoryResultsFormController;
         break;
+      default:
+        form = _socialDemographicFormController;
     }
 
     form!.validate();
