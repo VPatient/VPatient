@@ -4,7 +4,7 @@ enum Forms {
   nortonPressureUlcerForm,
   laboratoryResultsForm,
   fallRiskForm,
-  bloodSugarForm,
   medicinesForm,
-  vitalSignForm
+  vitalSignForm,
+  bloodSugarTraceForm
 }

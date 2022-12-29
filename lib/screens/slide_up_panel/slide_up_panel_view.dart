@@ -47,29 +47,35 @@ class SlideUpPanelView extends StatelessWidget {
                 child: Text("Sosyo-Demografik Form"),
               ),
               Tab(
+                child: Text("Norton Basınç Ülseri Formu"),
+              ),
+              Tab(
                 child: Text("Ağrı Niteliği Formu"),
               ),
               Tab(
-                child: Text("Norton Basınç Ülseri Formu"),
-              ),
+                child: Text("Düşme Riski Ölçeği Formu"),
+              ),      
               Tab(
                 child: Text("Laboratuvar Sonuçları"),
               ),
               Tab(
-                child: Text("Risk Ölçek Formu"),
+                child: Text("Kan Şekeri Takibi"),
               ),
-              Tab(child: Text("Kan Şekeri Takibi")),
-              Tab(child: Text("İlaçlar")),
-              Tab(child: Text("Yaşamsal Bulgular"))
+              Tab(
+                child: Text("İlaçlar"),
+              ),
+              Tab(
+                child: Text("Yaşamsal Bulgular"),
+              )
             ],
           ),
           Expanded(
             child: TabBarView(controller: _controller.tabController, children: [
               SocialDemographicForm(),
-              PainDescriptionForm(),
               NortonPressureUlcerForm(),
-              LaboratoryResultForm(),
+              PainDescriptionForm(),
               FallRiskScaleForm(),
+              LaboratoryResultForm(),
               BloodSugarTraceForm(),
               MedicinesForm(),
               VitalSignForm(),

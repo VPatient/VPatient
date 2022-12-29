@@ -136,25 +136,30 @@ class ChatSimulationScreen extends StatelessWidget {
   }
 
   Widget _chatBubble(ChatMessage message) {
+    var alignmentLocation = message.sender == MessageSender.patient
+        ? Alignment.centerLeft
+        : Alignment.centerRight;
+
+    var boxDecorationColor = message.sender == MessageSender.patient
+        ? VPColors.primaryColor
+        : Colors.white;
+
+    var textDecorationColor = message.sender != MessageSender.patient
+        ? VPColors.primaryColor
+        : Colors.white;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Align(
-          alignment: message.sender == MessageSender.patient
-              ? Alignment.centerLeft
-              : Alignment.centerRight,
+          alignment: alignmentLocation,
           child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: message.sender == MessageSender.patient
-                      ? VPColors.primaryColor
-                      : Colors.white),
+                  color: boxDecorationColor),
               width: Get.size.width / 2,
               child: Text(message.text,
-                  style: Get.textTheme.caption?.copyWith(
-                      color: message.sender == MessageSender.patient
-                          ? Colors.white
-                          : VPColors.primaryColor)))),
+                  style: Get.textTheme.caption
+                      ?.copyWith(color: textDecorationColor)))),
     );
   }
 }
