@@ -22,6 +22,8 @@ class VitalSignForm extends StatelessWidget {
                     VPCircularProgressIndicator(color: VPColors.primaryColor));
           }
           return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               DataTable(
                 columnSpacing: 20,
