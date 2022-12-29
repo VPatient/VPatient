@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/abstractions/base_form.dart';
+import 'package:vpatient/screens/forms/medicines_form/medicines_form_controller.dart';
 import 'package:vpatient/screens/forms/social_demographic_form/social_demographic_form_controller.dart';
 import 'package:vpatient/utils/forms.dart';
 
@@ -16,6 +17,8 @@ class SlideUpPanelController extends GetxController
 
   final _socialDemographicFormController =
       Get.put(SocialDemographicFormController());
+
+  final _medicinesFormController = Get.put(MedicinesFormController());
 
   BaseForm? form;
 
@@ -34,8 +37,11 @@ class SlideUpPanelController extends GetxController
 
   bool validateForm(Forms formType) {
     switch (formType) {
-      default:
+      case Forms.socialDemographicForm:
         form = _socialDemographicFormController;
+        break;
+      case Forms.medicinesForm:
+        form = _medicinesFormController;
         break;
     }
 
