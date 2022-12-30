@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/abstractions/base_form.dart';
+import 'package:vpatient/screens/forms/norton_pressure_ulcer_form/norton_pressure_ulcer_form_controller.dart';
 import 'package:vpatient/screens/forms/pain_description_form/pain_description_form_controller.dart';
 import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_form_controller.dart';
 import 'package:vpatient/screens/forms/laboratory_results_form/laboratory_results_form_controller.dart';
@@ -34,6 +35,9 @@ class SlideUpPanelController extends GetxController
 
   final _laboratoryResultsFormController =
       Get.put(LaboratoryResultsFormController());
+  
+  final _nortonPressureUlcerFormController =
+      Get.put(NortonPressureUlcerFormController());
 
   BaseForm? form;
 
@@ -69,6 +73,9 @@ class SlideUpPanelController extends GetxController
         break;
       case Forms.laboratoryResultsForm:
         form = _laboratoryResultsFormController;
+        break;
+      case Forms.nortonPressureUlcerForm:
+        form = _nortonPressureUlcerFormController;
         break;
       default:
         form = _socialDemographicFormController;
