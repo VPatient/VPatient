@@ -85,13 +85,15 @@ class SocialDemographicFormController extends BaseForm {
       return;
     }
 
-    if (patient?.contagiousDisease != (_contagiousDiseaseValue.value == "Var")) {
+    if (patient?.contagiousDisease !=
+        (_contagiousDiseaseValue.value == "Var")) {
       setValidated = false;
       VPSnackbar.error("Bulaşıcı hastalık bilgisi yanlış girildi.");
       return;
     }
 
-    VPSnackbar.success("Tebrikler formu doğru bir şekilde doldurdunuz.");
+    VPSnackbar.success(
+        "Formu başarıyla doldurdunuz, hasta ile konuşmaya devam edebilirsiniz.");
 
     super.setCalled = false;
     setValidated = true;

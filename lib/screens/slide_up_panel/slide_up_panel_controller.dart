@@ -5,6 +5,7 @@ import 'package:vpatient/abstractions/base_form.dart';
 import 'package:vpatient/screens/forms/norton_pressure_ulcer_form/norton_pressure_ulcer_form_controller.dart';
 import 'package:vpatient/screens/forms/pain_description_form/pain_description_form_controller.dart';
 import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_form_controller.dart';
+import 'package:vpatient/screens/forms/fall_risk_form/fall_risk_form_controller.dart';
 import 'package:vpatient/screens/forms/laboratory_results_form/laboratory_results_form_controller.dart';
 import 'package:vpatient/screens/forms/medicines_form/medicines_form_controller.dart';
 import 'package:vpatient/screens/forms/social_demographic_form/social_demographic_form_controller.dart';
@@ -38,6 +39,8 @@ class SlideUpPanelController extends GetxController
   
   final _nortonPressureUlcerFormController =
       Get.put(NortonPressureUlcerFormController());
+
+  final _fallRiskFormController = Get.put(FallRiskFormController());
 
   BaseForm? form;
 
@@ -73,6 +76,9 @@ class SlideUpPanelController extends GetxController
         break;
       case Forms.laboratoryResultsForm:
         form = _laboratoryResultsFormController;
+        break;
+      case Forms.fallRiskForm:
+        form = _fallRiskFormController;
         break;
       case Forms.nortonPressureUlcerForm:
         form = _nortonPressureUlcerFormController;

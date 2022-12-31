@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_form.dart';
-import 'package:vpatient/screens/forms/fall_risk_scale_form.dart';
+import 'package:vpatient/screens/forms/fall_risk_form/fall_risk_scale_form.dart';
 import 'package:vpatient/screens/forms/laboratory_results_form/laboratory_results_form.dart';
 import 'package:vpatient/screens/forms/medicines_form/medicines_form.dart';
 import 'package:vpatient/screens/forms/norton_pressure_ulcer_form/norton_pressure_ulcer_form.dart';
@@ -28,7 +28,7 @@ class SlideUpPanelView extends StatelessWidget {
         topRight: Radius.circular(24.0),
       ),
       minHeight: 0,
-      maxHeight: Get.size.height * .9,
+      maxHeight: Get.size.height * .8,
       panel: _slideUpPanelBody(),
     );
   }

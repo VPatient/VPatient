@@ -15,7 +15,7 @@ class VitalSignFormController extends BaseForm {
     _isChecked.value = value;
 
     VPSnackbar.success(
-        "Formu onayladınız, hasta ile konuşmaya devam edebilirsiniz.");
+        "Formu başarıyla doldurdunuz, hasta ile konuşmaya devam edebilirsiniz.");
     super.setCalled = false;
     setValidated = true;
   }
