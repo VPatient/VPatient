@@ -55,13 +55,12 @@ class PainDescriptionFormController extends BaseForm {
   get painQualifications => _painQualificationTypes;
 
   // pain type
-  final _painType = false.obs;
+  final _painType = "Sürekli".obs;
+  String get painType => _painType.value;
 
-  // get pain type
-  get painType => _painType.value;
-
-  // change pain type
-  void changePainType() => _painType.value = !_painType.value;
+  set setPainType(String value) {
+    _painType.value = value;
+  }
 
   // pain location
   final _painLocation = "Sağ Göğüs".obs;
@@ -113,8 +112,7 @@ class PainDescriptionFormController extends BaseForm {
       return;
     }
 
-    if ((patient.painType == "Sürekli" && !painType) ||
-        (patient.painType == "Aralıklı" && painType)) {
+    if ((patient.painType != painType)) {
       VPSnackbar.error("Ağrı tipini doğru seçmediniz");
       setValidated = false;
       return;

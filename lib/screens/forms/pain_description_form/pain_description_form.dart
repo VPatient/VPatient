@@ -19,8 +19,8 @@ class PainDescriptionForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return SingleChildScrollView(
+      child: Column(
         children: [
           const SizedBox(
             height: 50,
@@ -155,29 +155,29 @@ class PainDescriptionForm extends StatelessWidget {
     ]);
   }
 
-  _painType() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Row(children: [
-          Text("Sürekli", style: Get.textTheme.bodyText1),
-          Checkbox(
-              checkColor: Colors.white,
-              value: _controller.painType,
-              onChanged: (value) {
-                _controller.changePainType();
-              })
-        ]),
-        Row(children: [
-          Text("Sürekli değil", style: Get.textTheme.bodyText1),
-          Checkbox(
-              checkColor: Colors.white,
-              value: !_controller.painType,
-              onChanged: (value) {
-                _controller.changePainType();
-              })
-        ])
-      ],
-    );
+  Obx _painType() {
+    return Obx(() => Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: RadioListTile(
+                activeColor: VPColors.primaryColor,
+                title: const Text("Sürekli"),
+                value: "Sürekli",
+                groupValue: _controller.painType,
+                onChanged: (value) => _controller.setPainType = value!,
+              ),
+            ),
+            Expanded(
+              child: RadioListTile(
+                activeColor: VPColors.primaryColor,
+                title: const Text("Aralıklı"),
+                value: "Aralıklı",
+                groupValue: _controller.painType,
+                onChanged: (value) => _controller.setPainType = value!,
+              ),
+            ),
+          ],
+        ));
   }
 }

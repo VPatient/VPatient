@@ -26,54 +26,56 @@ class BloodSugarTraceForm extends StatelessWidget {
                 child:
                     VPCircularProgressIndicator(color: VPColors.primaryColor));
           }
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child: DataTable(
-                  columnSpacing: 20,
-                  columns: const [
-                    DataColumn(label: Text("Tarih")),
-                    DataColumn(label: Text("Sonuç")),
-                    DataColumn(label: Text("Not")),
-                  ],
-                  rows: List<DataRow>.generate(
-                    snapshot.data!.length,
-                    (index) => DataRow(
-                      cells: [
-                        DataCell(Text("${snapshot.data![index].time.hour}:00")),
-                        DataCell(Text(snapshot.data![index].result)),
-                        DataCell(Text(snapshot.data![index].note)),
-                      ],
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: DataTable(
+                    columnSpacing: 20,
+                    columns: const [
+                      DataColumn(label: Text("Tarih")),
+                      DataColumn(label: Text("Sonuç")),
+                      DataColumn(label: Text("Not")),
+                    ],
+                    rows: List<DataRow>.generate(
+                      snapshot.data!.length,
+                      (index) => DataRow(
+                        cells: [
+                          DataCell(Text("${snapshot.data![index].time.hour}:00")),
+                          DataCell(Text(snapshot.data![index].result)),
+                          DataCell(Text(snapshot.data![index].note)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Obx(() => Visibility(
-                    visible: _controller.isCalled,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Checkbox(
-                            value: _controller.isChecked,
-                            onChanged: ((value) {
-                              _controller.setChecked = value!;
-                            })),
-                        InkWell(
-                            hoverColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            onTap: () {
-                              _controller.setChecked = !_controller.isChecked;
-                            },
-                            child: Container(
-                                padding: const EdgeInsets.all(8),
-                                child: const Text("Formu inceledim")))
-                      ],
-                    ),
-                  ))
-            ],
+                Obx(() => Visibility(
+                      visible: _controller.isCalled,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Checkbox(
+                              value: _controller.isChecked,
+                              onChanged: ((value) {
+                                _controller.setChecked = value!;
+                              })),
+                          InkWell(
+                              hoverColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                              onTap: () {
+                                _controller.setChecked = !_controller.isChecked;
+                              },
+                              child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  child: const Text("Formu inceledim")))
+                        ],
+                      ),
+                    ))
+              ],
+            ),
           );
         });
   }

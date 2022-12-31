@@ -11,6 +11,7 @@ import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 import 'package:vpatient/utils/forms.dart';
 import 'package:vpatient/utils/message_sender.dart';
+import 'package:vpatient/utils/user_helper.dart';
 import 'package:vpatient/widgets/vp_snackbar.dart';
 
 class ChatSimulationController extends GetxController {
@@ -264,7 +265,8 @@ class ChatSimulationController extends GetxController {
 
   // function focus on last message on view
   void _jumpToLastMessage() {
-    listController.animateTo(listController.position.maxScrollExtent + 15000,
+    double offset = sentMessages.last.text.length * 3.0;
+    listController.animateTo(listController.position.maxScrollExtent + offset,
         curve: Curves.linear,
         duration: const Duration(milliseconds: 300)); // jump to last message
   }
@@ -293,6 +295,8 @@ class ChatSimulationController extends GetxController {
       messages = jsonDecode(response.body)
           .map<ChatMessage>((json) => ChatMessage.fromJson(json))
           .toList();
+
+      messages.first.text = messages.first.text.replaceAll("[user.name]", UserHelper.getUser().name);
 
       return messages;
     }
