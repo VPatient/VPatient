@@ -21,57 +21,59 @@ class MedicinesForm extends StatelessWidget {
                 child:
                     VPCircularProgressIndicator(color: VPColors.primaryColor));
           }
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              DataTable(
-                columnSpacing: 20,
-                columns: const [
-                  DataColumn(label: Text("Adı")),
-                  DataColumn(label: Text("Dozu")),
-                  DataColumn(label: Text("Saati")),
-                  DataColumn(label: Text("Nedeni")),
-                  DataColumn(label: Text("Süresi"))
-                ],
-                rows: List<DataRow>.generate(
-                  snapshot.data!.length,
-                  (index) => DataRow(
-                    cells: [
-                      DataCell(Text(snapshot.data![index].name)),
-                      DataCell(Text(snapshot.data![index].dose)),
-                      DataCell(
-                        Text(snapshot.data![index].time),
-                      ),
-                      DataCell(Text(snapshot.data![index].reason)),
-                      DataCell(Text(snapshot.data![index].duration)),
-                    ],
-                  ),
-                ),
-              ),
-              Obx(() => Visibility(
-                    visible: _controller.isCalled,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Checkbox(
-                            value: _controller.isChecked,
-                            onChanged: ((value) {
-                              _controller.setChecked = value!;
-                            })),
-                        InkWell(
-                            hoverColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            onTap: () {
-                              _controller.setChecked = !_controller.isChecked;
-                            },
-                            child: Container(
-                                padding: const EdgeInsets.all(8),
-                                child: const Text("Formu inceledim")))
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                DataTable(
+                  columnSpacing: 20,
+                  columns: const [
+                    DataColumn(label: Text("Adı")),
+                    DataColumn(label: Text("Dozu")),
+                    DataColumn(label: Text("Saati")),
+                    DataColumn(label: Text("Nedeni")),
+                    DataColumn(label: Text("Süresi"))
+                  ],
+                  rows: List<DataRow>.generate(
+                    snapshot.data!.length,
+                    (index) => DataRow(
+                      cells: [
+                        DataCell(Text(snapshot.data![index].name)),
+                        DataCell(Text(snapshot.data![index].dose)),
+                        DataCell(
+                          Text(snapshot.data![index].time),
+                        ),
+                        DataCell(Text(snapshot.data![index].reason)),
+                        DataCell(Text(snapshot.data![index].duration)),
                       ],
                     ),
-                  ))
-            ],
+                  ),
+                ),
+                Obx(() => Visibility(
+                      visible: _controller.isCalled,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Checkbox(
+                              value: _controller.isChecked,
+                              onChanged: ((value) {
+                                _controller.setChecked = value!;
+                              })),
+                          InkWell(
+                              hoverColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                              onTap: () {
+                                _controller.setChecked = !_controller.isChecked;
+                              },
+                              child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  child: const Text("Formu inceledim")))
+                        ],
+                      ),
+                    ))
+              ],
+            ),
           );
         });
   }

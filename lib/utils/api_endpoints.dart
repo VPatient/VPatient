@@ -14,17 +14,12 @@ class APIEndpoints {
       "${_baseUrl}patient/bloodsugar/get";
   static const String getMedicinesById = "${_baseUrl}patient/medicine/get";
   static const String getVitalSignById = "${_baseUrl}patient/vitalsign/get";
-
   static const String getPatientDiagnosisById =
       "${_baseUrl}patient/diagnosis/get";
   static const String getPatientFallRiskFactors =
       "${_baseUrl}patient/fallrisk/get";
-
-  // fall risk factors endpoint
   static const String getFallRiskFormFactors =
       "${_baseUrl}patient/fallrisk/factor/list";
-
-  static const String getPatientDiagnosisById = "${_baseUrl}patient/diagnosis/get";
   static const String getNortonPressureUlcerById = "${_baseUrl}patient/nortonpressureulcer/get";
 
 

@@ -24,7 +24,8 @@ class ChatSimulationScreen extends StatelessWidget {
               bottom: 100,
             ),
             child: Obx(() => ScrollConfiguration(
-                  behavior: const ScrollBehavior().copyWith(overscroll: false),
+                  behavior: const ScrollBehavior().copyWith(overscroll: false, physics: const ClampingScrollPhysics(
+                  )),
                   child: ListView.builder(
                     controller: _controller.listController,
                     itemCount: _controller.sentMessages.length,
