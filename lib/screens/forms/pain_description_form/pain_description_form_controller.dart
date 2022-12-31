@@ -113,7 +113,7 @@ class PainDescriptionFormController extends BaseForm {
     }
 
     if ((patient.painType != painType)) {
-      VPSnackbar.error("Ağrı tipini doğru seçmediniz");
+      VPSnackbar.error("Ağrı sürekliliğini doğru seçmediniz");
       setValidated = false;
       return;
     }

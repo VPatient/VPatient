@@ -37,7 +37,6 @@ class ChatSimulationScreen extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              //margin: EdgeInsets.only(bottom: Get.size.height * 0.055),
               width: double.infinity,
               color: Colors.grey[300],
               child: VPTextField(
@@ -121,7 +120,6 @@ class ChatSimulationScreen extends StatelessWidget {
                 color: Colors.white,
               );
             } else {
-              debugPrint("image: ${snapshot.data}");
               return snapshot.data as Image;
             }
           },

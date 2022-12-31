@@ -150,8 +150,17 @@ class ChatSimulationController extends GetxController {
       // open panel
       openPanel();
 
+      // get tab index
+      int tab = _findTabWithAction(message.text);
+
+      // check if tab is -1
+      if (tab == -1) {
+        Get.offAll(() => PatientDiagnosisScreen());
+        return;
+      }
+
       // animate to tab
-      _panelController.tabController.animateTo(_findTabWithAction(message.text),
+      _panelController.tabController.animateTo(tab,
           curve: Curves.decelerate,
           duration: const Duration(milliseconds: 500));
 
@@ -177,7 +186,6 @@ class ChatSimulationController extends GetxController {
   int _findTabWithAction(String actionName) {
     switch (actionName) {
       case "{DiagnosisScreen}":
-        Get.off(() => PatientDiagnosisScreen());
         return -1;
       case "{DemographicForm}":
         lastForm = Forms.socialDemographicForm;
@@ -297,7 +305,8 @@ class ChatSimulationController extends GetxController {
           .map<ChatMessage>((json) => ChatMessage.fromJson(json))
           .toList();
 
-      messages.first.text = messages.first.text.replaceAll("[user.name]", UserHelper.getUser().name);
+      messages.first.text = messages.first.text
+          .replaceAll("[user.name]", UserHelper.getUser().name);
 
       return messages;
     }
