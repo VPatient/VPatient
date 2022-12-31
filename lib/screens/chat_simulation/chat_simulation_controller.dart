@@ -9,6 +9,7 @@ import 'package:vpatient/screens/patient_diagnosis/patient_diagnosis_view.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
+import 'package:vpatient/utils/avatar_helper.dart';
 import 'package:vpatient/utils/forms.dart';
 import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/utils/user_helper.dart';
@@ -45,8 +46,8 @@ class ChatSimulationController extends GetxController {
       _sendMessageDisabled.value; // send message button state
 
   get patientImage async => patient == null
-      ? await _getPatient().then((value) => value?.gender)
-      : patient?.gender; // get patient image
+      ? await _getPatient().then((value) => AvatarHelper.getAvatar(value!))
+      : AvatarHelper.getAvatar(patient!); // get patient image
 
   get appBarText => _appBarText; // get app bar text
 
