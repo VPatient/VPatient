@@ -38,7 +38,6 @@ class ChatSimulationScreen extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              //margin: EdgeInsets.only(bottom: Get.size.height * 0.055),
               width: double.infinity,
               color: Colors.grey[300],
               child: VPTextField(
