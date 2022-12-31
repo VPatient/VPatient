@@ -116,13 +116,13 @@ class ChatSimulationScreen extends StatelessWidget {
         child: FutureBuilder(
           future: _controller.patientImage,
           builder: (context, snapshot) {
-            if (snapshot.connectionState != ConnectionState.done) {
+            if (!snapshot.hasData) {
               return const VPCircularProgressIndicator(
                 color: Colors.white,
               );
             } else {
-              return Image.asset(
-                  "assets/images/${_controller.patient?.gender}-1.png");
+              debugPrint("image: ${snapshot.data}");
+              return snapshot.data as Image;
             }
           },
         ),

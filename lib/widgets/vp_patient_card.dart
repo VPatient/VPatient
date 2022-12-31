@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vpatient/models/patient.dart';
+import 'package:vpatient/utils/avatar_helper.dart';
 
 class PatientCard extends StatelessWidget {
   const PatientCard({
@@ -31,10 +32,7 @@ class PatientCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Image.asset(
-              "assets/images/${patient.gender}-1.png",
-              width: 150,
-            ),
+            AvatarHelper.getAvatar(patient),
             Text(patient.name,
                 style: const TextStyle(color: Colors.white, fontSize: 20)),
             Column(
