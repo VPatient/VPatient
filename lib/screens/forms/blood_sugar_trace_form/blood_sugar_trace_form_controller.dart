@@ -16,7 +16,7 @@ class BloodSugarTraceFormController extends BaseForm {
 
     if (isChecked) {
       VPSnackbar.success(
-          "Formu onayladınız, hasta ile konuşmaya devam edebilirsiniz.");
+          "Formu başarıyla doldurdunuz, hasta ile konuşmaya devam edebilirsiniz.");
       super.setCalled = false;
       setValidated = true;
     }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/abstractions/base_form.dart';
 import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_form_controller.dart';
+import 'package:vpatient/screens/forms/fall_risk_form/fall_risk_form_controller.dart';
 import 'package:vpatient/screens/forms/laboratory_results_form/laboratory_results_form_controller.dart';
 import 'package:vpatient/screens/forms/medicines_form/medicines_form_controller.dart';
 import 'package:vpatient/screens/forms/social_demographic_form/social_demographic_form_controller.dart';
@@ -30,6 +31,8 @@ class SlideUpPanelController extends GetxController
 
   final _laboratoryResultsFormController =
       Get.put(LaboratoryResultsFormController());
+
+  final _fallRiskFormController = Get.put(FallRiskFormController());
 
   BaseForm? form;
 
@@ -62,6 +65,9 @@ class SlideUpPanelController extends GetxController
         break;
       case Forms.laboratoryResultsForm:
         form = _laboratoryResultsFormController;
+        break;
+      case Forms.fallRiskForm:
+        form = _fallRiskFormController;
         break;
     }
 
