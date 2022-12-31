@@ -24,8 +24,9 @@ class ChatSimulationScreen extends StatelessWidget {
               bottom: 100,
             ),
             child: Obx(() => ScrollConfiguration(
-                  behavior: const ScrollBehavior().copyWith(overscroll: false, physics: const ClampingScrollPhysics(
-                  )),
+                  behavior: const ScrollBehavior().copyWith(
+                      overscroll: false,
+                      physics: const ClampingScrollPhysics()),
                   child: ListView.builder(
                     controller: _controller.listController,
                     itemCount: _controller.sentMessages.length,
@@ -121,7 +122,6 @@ class ChatSimulationScreen extends StatelessWidget {
                 color: Colors.white,
               );
             } else {
-              debugPrint("image: ${snapshot.data}");
               return snapshot.data as Image;
             }
           },

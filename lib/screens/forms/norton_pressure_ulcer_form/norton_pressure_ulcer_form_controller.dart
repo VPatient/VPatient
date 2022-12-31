@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/abstractions/base_form.dart';
+import 'package:vpatient/main.dart';
 import 'package:vpatient/models/norton_pressure_ulcer.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
@@ -160,5 +161,6 @@ class NortonPressureUlcerFormController extends BaseForm {
     VPSnackbar.success("Tebrikler formu doğru bir şekilde doldurdunuz.");
     super.setCalled = false;
     setValidated = true;
+    panelController.closePanel();
   }
 }

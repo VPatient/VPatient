@@ -43,16 +43,18 @@ class PatientDiagnosisScreen extends StatelessWidget {
                   style: const TextStyle(fontSize: 20),
                 ),
               )),
-          Obx(() => ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: _controller.getIsSubmitted
-                      ? MaterialStateProperty.all<Color>(Colors.grey)
-                      : MaterialStateProperty.all<Color>(Colors.green),
+          Obx(() => Visibility(
+                visible: !_controller.getIsSubmitted,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(VPColors.primaryColor),
+                  ),
+                  onPressed: () {
+                    _controller.controlSubmit();
+                  },
+                  child: const Text("Gönder"),
                 ),
-                onPressed: () {
-                  _controller.controlSubmit();
-                },
-                child: const Text("Gönder"),
               )),
         ],
       ),

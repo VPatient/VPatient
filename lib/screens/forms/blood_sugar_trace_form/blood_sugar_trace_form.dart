@@ -1,14 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:vpatient/models/blood_sugar_trace.dart';
 import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_form_controller.dart';
 import 'package:vpatient/style/colors.dart';
-import 'package:vpatient/utils/api_endpoints.dart';
-import 'package:http/http.dart' as http;
-import 'package:vpatient/widgets/vp_snackbar.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 
 class BloodSugarTraceForm extends StatelessWidget {
@@ -44,7 +37,8 @@ class BloodSugarTraceForm extends StatelessWidget {
                       snapshot.data!.length,
                       (index) => DataRow(
                         cells: [
-                          DataCell(Text("${snapshot.data![index].time.hour}:00")),
+                          DataCell(
+                              Text("${snapshot.data![index].time.hour}:00")),
                           DataCell(Text(snapshot.data![index].result)),
                           DataCell(Text(snapshot.data![index].note)),
                         ],
