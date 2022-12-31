@@ -63,10 +63,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => _controller.openPanel()),
           ElevatedButton(
               child: const Text("Hasta Tanısı"),
-              onPressed: () => {
-                Get.to(() => PatientDiagnosisScreen())
-              }
-          ),
+              onPressed: () => {Get.to(() => PatientDiagnosisScreen())}),
         ],
       )),
     );

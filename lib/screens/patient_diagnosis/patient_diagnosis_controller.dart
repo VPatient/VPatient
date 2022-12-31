@@ -1,7 +1,6 @@
 import 'dart:collection';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/models/patient_diagnosis.dart';
@@ -91,7 +90,7 @@ class PatientDiagnosisController extends GetxController {
     else {
       getSelectedDiagnosises.add(selectedDiagnosis);
     }
-    
+
     _diagnosisCheck.value++;
   }
 

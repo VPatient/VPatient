@@ -3,17 +3,9 @@ import 'package:get/get.dart';
 import 'package:vpatient/screens/forms/pain_description_form/pain_description_form_controller.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/widgets/vp_button.dart';
-import 'package:vpatient/widgets/vp_snackbar.dart';
-import 'package:vpatient/widgets/vp_textfield.dart';
 
 class PainDescriptionForm extends StatelessWidget {
   final _controller = Get.put(PainDescriptionFormController());
-
-  final _painLocationController = TextEditingController();
-
-  get _isSubmitted => _controller.isValidated;
-
-  get _patient => _controller.patient;
 
   PainDescriptionForm({super.key});
 

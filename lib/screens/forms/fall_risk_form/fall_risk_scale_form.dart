@@ -4,7 +4,6 @@ import 'package:vpatient/models/fall_risk_form_factors.dart';
 import 'package:vpatient/screens/forms/fall_risk_form/fall_risk_form_controller.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/widgets/vp_button.dart';
-import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
 
 class FallRiskScaleForm extends StatelessWidget {
   FallRiskScaleForm({Key? key}) : super(key: key);

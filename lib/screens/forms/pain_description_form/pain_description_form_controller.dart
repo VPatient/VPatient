@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vpatient/abstractions/base_form.dart';
+import 'package:vpatient/main.dart';
 import 'package:vpatient/widgets/vp_snackbar.dart';
 
 class PainDescriptionFormController extends BaseForm {
@@ -38,9 +38,8 @@ class PainDescriptionFormController extends BaseForm {
   bool containsPainQualification(String item) =>
       _painQualifications.contains(item);
 
-
   // all possible pain qualifications
-    final _painQualificationTypes = [
+  final _painQualificationTypes = [
     "Sızlama",
     "Künt",
     "Yanma",
@@ -82,7 +81,8 @@ class PainDescriptionFormController extends BaseForm {
     "Sol Kol",
     "Sırt",
     "Baş",
-    "Diğer"];
+    "Diğer"
+  ];
 
   // get pain locations
   get painLocations => _painLocations;
@@ -117,7 +117,7 @@ class PainDescriptionFormController extends BaseForm {
       setValidated = false;
       return;
     }
-    
+
     if (!controlRealPainQualifications()) {
       VPSnackbar.error("Ağrı niteliklerini doğru seçmediniz");
       setValidated = false;
@@ -127,6 +127,7 @@ class PainDescriptionFormController extends BaseForm {
     VPSnackbar.success("Tebrikler formu doğru bir şekilde doldurdunuz.");
     super.setCalled = false;
     setValidated = true;
+    panelController.closePanel();
   }
 
   bool controlRealPainQualifications() {

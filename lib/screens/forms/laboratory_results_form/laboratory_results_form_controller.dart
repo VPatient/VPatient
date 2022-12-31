@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/abstractions/base_form.dart';
+import 'package:vpatient/main.dart';
 import 'package:vpatient/models/laboratory_result.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
 import 'package:vpatient/widgets/vp_snackbar.dart';
@@ -19,6 +20,7 @@ class LaboratoryResultsFormController extends BaseForm {
           "Formu başarıyla doldurdunuz, hasta ile konuşmaya devam edebilirsiniz.");
       super.setCalled = false;
       setValidated = true;
+      panelController.closePanel();
     }
   }
 
