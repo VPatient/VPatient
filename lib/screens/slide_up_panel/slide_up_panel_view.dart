@@ -5,8 +5,8 @@ import 'package:vpatient/screens/forms/blood_sugar_trace_form/blood_sugar_trace_
 import 'package:vpatient/screens/forms/fall_risk_form/fall_risk_scale_form.dart';
 import 'package:vpatient/screens/forms/laboratory_results_form/laboratory_results_form.dart';
 import 'package:vpatient/screens/forms/medicines_form/medicines_form.dart';
-import 'package:vpatient/screens/forms/norton_pressure_ulcer_form.dart';
-import 'package:vpatient/screens/forms/pain_description_form.dart';
+import 'package:vpatient/screens/forms/norton_pressure_ulcer_form/norton_pressure_ulcer_form.dart';
+import 'package:vpatient/screens/forms/pain_description_form/pain_description_form.dart';
 import 'package:vpatient/screens/forms/social_demographic_form/social_demographic_form.dart';
 import 'package:vpatient/screens/forms/vital_sign_form/vital_sign_form.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';

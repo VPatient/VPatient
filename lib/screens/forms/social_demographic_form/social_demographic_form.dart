@@ -52,23 +52,27 @@ class SocialDemographicForm extends StatelessWidget {
               _renderWeight(),
               _renderLabel("Vücut Kitle İndeksi"),
               _renderBMI(),
-              Obx(() => Visibility(
-                    visible: _controller.isCalled,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: VPButton(
-                          bgColor: VPColors.primaryColor,
-                          text: "Gönder",
-                          textColor: Colors.white,
-                          function: () => _controller.validate(),
-                          width: .5),
-                    ),
-                  ))
+              _renderSendButton()
             ],
           ),
         ),
       ),
     );
+  }
+
+  Obx _renderSendButton() {
+    return Obx(() => Visibility(
+          visible: _controller.isCalled,
+          child: Align(
+            alignment: Alignment.center,
+            child: VPButton(
+                bgColor: VPColors.primaryColor,
+                text: "Gönder",
+                textColor: Colors.white,
+                function: () => _controller.validate(),
+                width: .5),
+          ),
+        ));
   }
 
   VPTextFieldOutline _renderBMI() {
