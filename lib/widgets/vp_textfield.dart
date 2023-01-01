@@ -53,7 +53,7 @@ class VPTextField extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 child: TextField(
                   minLines: 1,
-                  maxLines: null,
+                  maxLines: _maxLines,
                   textAlign: TextAlign.start,
                   enabled: _isEnabled,
                   keyboardType: _keyboardType,

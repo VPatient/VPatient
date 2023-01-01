@@ -43,6 +43,9 @@ class PatientListController extends GetxController {
   }
 
   void selectPatient() async {
+    if (GetStorage().hasData("selectedPatient")) {
+      GetStorage().remove("selectedPatient");
+    }
     await GetStorage()
         .write("selectedPatient", _patients[_activePage.value].id);
     Get.off(() => LandingPage());

@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/screens/home/home_view.dart';
-import 'package:vpatient/screens/patient_list/patient_list_view.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_view.dart';
 import 'package:vpatient/style/themes.dart';
-import 'package:vpatient/utils/user_helper.dart';
 
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -42,11 +40,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sanal Hastam',
       theme: Themes.baseTheme,
-      home: GetStorage().hasData("token")
-          ? UserHelper.getUser().email == "test@admin.com"
-              ? HomeScreen()
-              : PatientListScreen()
-          : LoginScreen(),
+      home: GetStorage().hasData("token") ? HomeScreen() : LoginScreen(),
       builder: (context, child) {
         return Navigator(
           onGenerateRoute: (_) => MaterialPageRoute(builder: (context) {

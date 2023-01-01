@@ -20,12 +20,13 @@ class APIEndpoints {
       "${_baseUrl}patient/fallrisk/get";
   static const String getFallRiskFormFactors =
       "${_baseUrl}patient/fallrisk/factor/list";
-  static const String getNortonPressureUlcerById = "${_baseUrl}patient/nortonpressureulcer/get";
-
+  static const String getNortonPressureUlcerById =
+      "${_baseUrl}patient/nortonpressureulcer/get";
 
   // scenario endpoint
   static const String getScenario = "${_baseUrl}scenario/get";
 
   // grade endpoints
   static const String createGrade = "${_baseUrl}grade/create";
+  static const String getGrade = "${_baseUrl}grade/user";
 }

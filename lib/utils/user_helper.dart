@@ -10,4 +10,18 @@ class UserHelper {
 
     return user;
   }
+
+  static String getFirstCharacters() {
+    User user = UserHelper.getUser();
+
+    String firstChars = "";
+
+    final chars = user.name.split(" ");
+
+    for (var element in chars) {
+      firstChars += element[0];
+    }
+
+    return firstChars;
+  }
 }

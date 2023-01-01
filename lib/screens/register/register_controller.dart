@@ -14,7 +14,7 @@ class RegisterController extends GetxController {
   final TextEditingController nameSurnameController = TextEditingController();
 
   navigateToLogin() {
-    Get.to(() => LoginScreen());
+    Get.off(() => LoginScreen());
   }
 
   register() async {
@@ -48,13 +48,27 @@ class RegisterController extends GetxController {
       return false;
     }
 
-    if (GetUtils.isNull(password)) {
-      VPSnackbar.warning("Şifre boş bırakılamaz.");
+    if (GetUtils.isLengthLessThan(name, 6)) {
+      VPSnackbar.warning("Ad-Soyad minimum 6 karakterden oluşmalıdır.");
       return false;
     }
 
     if (!GetUtils.isNumericOnly(studentNo)) {
       VPSnackbar.warning("Öğrenci numarası sadece rakamlardan oluşmalıdır.");
+      return false;
+    }
+
+    if (GetUtils.isLengthGreaterThan(studentNo, 11)) {
+      VPSnackbar.warning("Öğrenci numarası en fazla 11 karakter olabilir");
+      return false;
+    }
+    if (GetUtils.isNull(password)) {
+      VPSnackbar.warning("Şifre boş bırakılamaz.");
+      return false;
+    }
+
+    if (GetUtils.isLengthLessThan(password, 6)) {
+      VPSnackbar.warning("Şifre minimum 6 karakterden oluşmalıdır.");
       return false;
     }
 
