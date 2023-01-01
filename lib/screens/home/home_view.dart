@@ -75,6 +75,7 @@ class HomeScreen extends StatelessWidget {
                                   .map((e) => _renderGradeCard(e))
                                   .toList(),
                               options: CarouselOptions(
+                                  enableInfiniteScroll: false,
                                   enlargeCenterPage: true,
                                   height: Get.size.height * .5),
                             )
