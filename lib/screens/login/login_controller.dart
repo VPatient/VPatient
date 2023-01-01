@@ -14,7 +14,7 @@ class LoginController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
 
   navigateToRegister() {
-    Get.to(() => RegisterScreen());
+    Get.off(() => RegisterScreen());
   }
 
   signIn() async {
@@ -35,7 +35,7 @@ class LoginController extends GetxController {
 
       VPSnackbar.success("Giriş başarılı.");
 
-      Get.to(() => HomeScreen());
+      Get.off(() => HomeScreen());
     } else {
       VPSnackbar.error(response.body);
     }

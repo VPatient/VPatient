@@ -110,6 +110,9 @@ class PatientDiagnosisController extends GetxController {
           : totalPoint - diagnosisPoint;
     }
 
+    if (totalPoint < 0) {
+      totalPoint = 0;
+    }
     setGrade = totalPoint.toInt();
   }
 

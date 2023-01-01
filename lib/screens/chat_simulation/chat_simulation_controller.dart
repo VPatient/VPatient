@@ -150,17 +150,16 @@ class ChatSimulationController extends GetxController {
 
     // check if message is action
     if (message.action) {
-      // open panel
-      openPanel();
-
       // get tab index
       int tab = _findTabWithAction(message.text);
 
       // check if tab is -1
       if (tab == -1) {
-        Get.offAll(() => PatientDiagnosisScreen());
+        Get.off(() => PatientDiagnosisScreen());
         return;
       }
+      // open panel
+      openPanel();
 
       // animate to tab
       _panelController.tabController.animateTo(tab,

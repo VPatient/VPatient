@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpatient/abstractions/base_form.dart';
 import 'package:vpatient/main.dart';
 import 'package:vpatient/widgets/vp_snackbar.dart';
@@ -24,7 +23,8 @@ class SocialDemographicFormController extends BaseForm {
       super.validate();
       return;
     }
-    if (nameSurnameController.text != patient?.name) {
+    if (nameSurnameController.text.toLowerCase().trim() !=
+        patient?.name.toString().toLowerCase().trim()) {
       setValidated = false;
       VPSnackbar.error("Ad-soyad bilgisi yanlış girildi.");
       return;

@@ -5,7 +5,6 @@ import 'package:vpatient/screens/chat_simulation/chat_simulation_controller.dart
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/widgets/vp_circular_progress_indicator.dart';
-import 'package:vpatient/widgets/vp_textfield.dart';
 
 class ChatSimulationScreen extends StatelessWidget {
   ChatSimulationScreen({super.key});
@@ -168,15 +167,19 @@ class ChatSimulationScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Align(
           alignment: alignmentLocation,
-          child: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: boxDecorationColor),
-              width: Get.size.width / 2,
-              child: Text(message.text,
-                  style: Get.textTheme.caption
-                      ?.copyWith(color: textDecorationColor)))),
+          child: Column(
+            children: [
+              Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: boxDecorationColor),
+                  width: Get.size.width / 1.5,
+                  child: Text(message.text,
+                      style: Get.textTheme.caption
+                          ?.copyWith(color: textDecorationColor))),
+            ],
+          )),
     );
   }
 }
