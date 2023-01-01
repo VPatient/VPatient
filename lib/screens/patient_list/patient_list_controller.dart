@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:vpatient/main.dart';
 import 'package:vpatient/models/patient.dart';
 import 'package:vpatient/screens/landing_page/landing_page_view.dart';
 import 'package:vpatient/utils/api_endpoints.dart';
@@ -48,6 +49,7 @@ class PatientListController extends GetxController {
     }
     await GetStorage()
         .write("selectedPatient", _patients[_activePage.value].id);
+    panelController.fillSocialDemographicForm(_patients[_activePage.value]);
     Get.off(() => LandingPage());
   }
 }

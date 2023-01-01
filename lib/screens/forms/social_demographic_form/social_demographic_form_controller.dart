@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vpatient/abstractions/base_form.dart';
 import 'package:vpatient/main.dart';
+import 'package:vpatient/models/patient.dart';
 import 'package:vpatient/widgets/vp_snackbar.dart';
 
 class SocialDemographicFormController extends BaseForm {
@@ -14,7 +15,7 @@ class SocialDemographicFormController extends BaseForm {
     heightController.addListener(_calculateBMI);
     weightController.addListener(_calculateBMI);
 
-    _fillPatientInfo();
+    fillPatientInfo(super.patient);
   }
 
   @override
@@ -102,10 +103,10 @@ class SocialDemographicFormController extends BaseForm {
     panelController.closePanel();
   }
 
-  _fillPatientInfo() {
-    jobController.text = patient?.job;
-    insuranceController.text = patient?.insurance;
-    primaryDiagnosisController.text = patient?.primaryDiagnosis;
+  fillPatientInfo(Patient patient) {
+    jobController.text = patient.job;
+    insuranceController.text = patient.insurance;
+    primaryDiagnosisController.text = patient.primaryDiagnosis;
   }
 
   void _calculateBMI() {
