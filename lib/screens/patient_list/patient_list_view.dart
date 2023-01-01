@@ -47,7 +47,7 @@ class PatientListScreen extends GetView {
                             .toList(),
                         options: CarouselOptions(
                             enlargeCenterPage: true,
-                            enableInfiniteScroll: true,
+                            enableInfiniteScroll: false,
                             onPageChanged: (index, reason) =>
                                 _controller.setActivePage = index,
                             height: Get.size.height * .7),

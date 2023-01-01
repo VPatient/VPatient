@@ -155,7 +155,7 @@ class ChatSimulationController extends GetxController {
 
       // check if tab is -1
       if (tab == -1) {
-        Get.off(() => PatientDiagnosisScreen());
+        Get.offAll(() => PatientDiagnosisScreen());
         return;
       }
       // open panel

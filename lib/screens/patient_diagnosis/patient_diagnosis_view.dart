@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vpatient/models/patient_diagnosis.dart';
+import 'package:vpatient/screens/home/home_view.dart';
 import 'package:vpatient/screens/patient_diagnosis/patient_diagnosis_controller.dart';
 import 'package:vpatient/style/colors.dart';
 
@@ -38,9 +39,23 @@ class PatientDiagnosisScreen extends StatelessWidget {
           ),
           Obx(() => Visibility(
                 visible: _controller.getIsSubmitted,
-                child: Text(
-                  "Aldığınız Puan: ${_controller.getGrade.toStringAsFixed(2)}",
-                  style: const TextStyle(fontSize: 20),
+                child: Column(
+                  children: [
+                    Text(
+                      "Aldığınız Puan: ${_controller.getGrade.toStringAsFixed(2)}",
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    ElevatedButton(
+                        onPressed: () => Get.off(() => HomeScreen()),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              VPColors.primaryColor),
+                        ),
+                        child: const Text("Ana Sayfa"))
+                  ],
                 ),
               )),
           Obx(() => Visibility(
