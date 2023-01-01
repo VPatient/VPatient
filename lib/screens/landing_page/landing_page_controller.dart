@@ -23,11 +23,11 @@ class LandingPageController extends GetxController {
       Get.off(() => ChatSimulationScreen());
     }
     pageController.nextPage(
-        duration: const Duration(milliseconds: 500), curve: Curves.linear);
+        duration: const Duration(milliseconds: 750), curve: Curves.linearToEaseOut);
   }
 
   void navigateToPreviousPage() {
     pageController.previousPage(
-        duration: const Duration(milliseconds: 500), curve: Curves.linear);
+        duration: const Duration(milliseconds: 750), curve: Curves.linearToEaseOut);
   }
 }
