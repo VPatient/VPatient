@@ -26,6 +26,9 @@ class ChatSimulationController extends GetxController {
   }
 
   final _appBarText = "".obs; // app bar text
+  final _message = "Hasta ile iletişime geçin.".obs;
+  get message => _message.value;
+  set setMessage(String value) => _message.value = value;
   final TextEditingController chatController =
       TextEditingController(); // chat controller
   final ScrollController listController =
@@ -93,14 +96,14 @@ class ChatSimulationController extends GetxController {
     }
 
     // check if message is empty
-    if (chatController.text.isEmpty) {
+    if (_message.value == "Hasta ile iletişime geçin.") {
       VPSnackbar.warning("Lütfen bir mesaj seçiniz.");
       return;
     }
 
     // get message
     var message =
-        messages.where((element) => element.text == chatController.text).first;
+        messages.where((element) => element.text == _message.value).first;
 
     // check if message sequence is correct
     if (message.sequence != messageSequence) {
@@ -268,7 +271,7 @@ class ChatSimulationController extends GetxController {
 
   // function close keyboard after nurse sends message
   void _unfocusKeyboard() {
-    chatController.clear(); // clear text field
+    setMessage = "Hasta ile iletişime geçin."; // clear text field
     FocusManager.instance.primaryFocus?.unfocus(); // close keyboard
   }
 

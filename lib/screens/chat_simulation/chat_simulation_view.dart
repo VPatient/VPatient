@@ -40,14 +40,31 @@ class ChatSimulationScreen extends StatelessWidget {
             child: Container(
               width: double.infinity,
               color: Colors.grey[300],
-              child: VPTextField(
-                leadWidget: _dropDownMenu(),
-                trailWidget: _sendButton(),
-                text: "Hastayla iletişime geçin",
-                controller: _controller.chatController,
-                enabled: false,
-                isObscured: false,
-                keyboardType: TextInputType.text,
+              child: Container(
+                margin: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _dropDownMenu(),
+                      Obx(() => Expanded(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Text(
+                                _controller.message,
+                                style: Get.textTheme.bodyText1?.copyWith(
+                                  color: _controller.sendMessageStatus
+                                      ? VPColors.primaryColor
+                                      : Colors.grey,
+                                ),
+                              ),
+                            ),
+                          )),
+                      _sendButton()
+                    ]),
               ),
             ),
           ),
@@ -82,7 +99,7 @@ class ChatSimulationScreen extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           offset: const Offset(0, 0),
-          onSelected: (value) => _controller.chatController.text = value.text,
+          onSelected: (value) => _controller.setMessage = value.text,
           icon: Icon(Icons.arrow_circle_up,
               color: _controller.sendMessageStatus
                   ? VPColors.primaryColor
