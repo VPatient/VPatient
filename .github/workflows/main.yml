@@ -29,15 +29,15 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: flutter build apk --debug
+      - run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-debug.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
             appId: ${{secrets.FIREBASE_ANDROID_APPID}}
             token: ${{secrets.FIREBASE_TOKEN}}
             groups: testers
-            file: build/app/outputs/flutter-apk/app-debug.apk
+            file: build/app/outputs/flutter-apk/app-release.apk
