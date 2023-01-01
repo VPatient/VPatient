@@ -49,23 +49,27 @@ class VPTextField extends StatelessWidget {
           children: [
             _leadWidget ?? const SizedBox(width: 15),
             Expanded(
-              child: TextField(
-                maxLines: _maxLines,
-                textAlign: TextAlign.start,
-                enabled: _isEnabled,
-                keyboardType: _keyboardType,
-                style: Theme.of(context).textTheme.bodyText1,
-                obscureText: _isObscured,
-                controller: _controller,
-                cursorColor: VPColors.primaryColor,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 0),
-                    icon: Icon(_icon,
-                        color: VPColors.primaryColor,
-                        size: _icon == null ? 0 : 24),
-                    hintText: _text,
-                    hintStyle: Theme.of(context).textTheme.bodyText1),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: TextField(
+                  minLines: 1,
+                  maxLines: null,
+                  textAlign: TextAlign.start,
+                  enabled: _isEnabled,
+                  keyboardType: _keyboardType,
+                  style: Theme.of(context).textTheme.bodyText1,
+                  obscureText: _isObscured,
+                  controller: _controller,
+                  cursorColor: VPColors.primaryColor,
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 0),
+                      icon: Icon(_icon,
+                          color: VPColors.primaryColor,
+                          size: _icon == null ? 0 : 24),
+                      hintText: _text,
+                      hintStyle: Theme.of(context).textTheme.bodyText1),
+                ),
               ),
             ),
             _trailWidget ?? Container()
