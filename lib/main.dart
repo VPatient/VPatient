@@ -1,16 +1,17 @@
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vpatient/screens/home/home_view.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_view.dart';
+import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/style/themes.dart';
 
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'screens/login/login_view.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 final panelController = Get.put(SlideUpPanelController());
 
@@ -20,10 +21,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await GetStorage.init();
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  await sleepApp();
-  FlutterNativeSplash.remove();
+  //WidgetsBinding widgetsBinding = Wid
   runApp(const MyApp());
 }
 
@@ -40,7 +38,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sanal Hastam',
       theme: Themes.baseTheme,
-      home: GetStorage().hasData("token") ? HomeScreen() : LoginScreen(),
+      home: const SplashScreen(),
       builder: (context, child) {
         return Navigator(
           onGenerateRoute: (_) => MaterialPageRoute(builder: (context) {
@@ -49,5 +47,24 @@ class MyApp extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: FlutterSplashScreen.fadeIn(
+            animationCurve: Curves.easeInOut,
+            backgroundColor: VPColors.primaryColor,
+            fadeInAnimationDuration: const Duration(milliseconds: 750),
+            fadeInChildWidget: Image.asset(
+              "assets/images/icons/vpatient-logo.png",
+              width: Get.size.width / 3,
+            ),
+            defaultNextScreen:
+                GetStorage().hasData("token") ? HomeScreen() : LoginScreen()));
   }
 }

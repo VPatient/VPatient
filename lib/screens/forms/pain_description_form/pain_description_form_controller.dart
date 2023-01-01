@@ -46,7 +46,7 @@ class PainDescriptionFormController extends BaseForm {
     "Gerilme",
     "Zonklama",
     "Acıma",
-    "Batma",
+    "Keskin",
     "Sıkıştırma",
   ];
 
