@@ -98,6 +98,36 @@ class NortonPressureUlcerFormController extends BaseForm {
   set incontinenceConditionIndex(int value) =>
       _incontinenceConditionIndex.value = value;
 
+
+  // create list obs
+  final _pressureRisks = [].obs;
+
+  // add or remove item from pain qualifications
+  void checkPainQualification(String item) => _pressureRisks.contains(item)
+      ? _pressureRisks.remove(item)
+      : _pressureRisks.add(item);
+
+  // check if pain qualifications contains item
+  bool containsPainQualification(String item) =>
+      _pressureRisks.contains(item);
+
+  // all possible pain qualifications
+  final _pressureRiskTypes = [
+    "Obezite",
+    "Beslenme bozukluğu",
+    "Diyabet",
+    "Yaşlılık",
+    "Ödem",
+    "Anemi",
+    "Hipertansiyon",
+    "Tüp ile beslenme",
+    "Hareket kısıtlığı"
+  ];
+
+  // get pain qualifications
+  get pressureRisks => _pressureRiskTypes;
+
+
   @override
   void onInit() async {
     super.onInit();
@@ -119,11 +149,27 @@ class NortonPressureUlcerFormController extends BaseForm {
           NortonPressureUlcer.fromJson(json.decode(response.body)[0]);
     }
   }
+  bool controlPressureRisk() {
+    var list1 = patient.painQualification.split(", ");
+    var list2 = _pressureRisks;
+
+    var condition1 = list1.toSet().difference(list2.toSet()).isEmpty;
+    var condition2 = list1.length == list2.length;
+    return condition1 && condition2;
+  }
+
 
   @override
   void validate() {
     if (!super.isCalled) {
       super.validate();
+      return;
+    }
+
+
+    if (!controlPressureRisk()) {
+      VPSnackbar.error("Basınç yarası risk faktörlerini doğru seçmediniz");
+      setValidated = false;
       return;
     }
 
@@ -163,4 +209,6 @@ class NortonPressureUlcerFormController extends BaseForm {
     setValidated = true;
     panelController.closePanel();
   }
+
+
 }

@@ -4,64 +4,39 @@ import 'package:vpatient/screens/forms/norton_pressure_ulcer_form/norton_pressur
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/widgets/vp_button.dart';
 
-class NortonPressureUlcerForm extends StatelessWidget {
-  final NortonPressureUlcerFormController _controller =
-      Get.put(NortonPressureUlcerFormController());
+import 'ensuring_safe_environment_form_controller.dart';
+
+class EnsuringSafeEnvironmentForm extends StatelessWidget {
+  final EnsuringSafeEnvironmentFormController _controller =
+  Get.put(EnsuringSafeEnvironmentFormController());
 
   final TextStyle _labelStyle = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
 
-  NortonPressureUlcerForm({Key? key}) : super(key: key);
+  EnsuringSafeEnvironmentForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
+/*  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: _renderConditions(),
-      ),
-    );
-  }
+        body: Container(
+          child: _renderConditions(),
+        ));
+  }*/
 
-  _painQualifications() {
-    return SizedBox(
-      height: 250,
-      child: GridView.count(
-        children: _controller.pressureRisks.map<Widget>((e) {
-          return _painQualificationItem(e);
-        }).toList(),
-        crossAxisCount: 3,
-      ),
-    );
-  }
-
-  Widget _painQualificationItem(String name) {
-    return Container(
-      width: 70,
-      height: 100,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(name,
-            style: Get.textTheme.bodyText1!.copyWith(
-              fontSize: 15,
-            )),
-        Obx(() => Checkbox(
-            checkColor: Colors.white,
-            value: _controller.containsPainQualification(name),
-            onChanged: (value) {
-              _controller.checkPainQualification(name);
-            }))
-      ]),
-    );
-  }
-
-  Column _renderConditions() {
+ /* Column _renderConditions() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _painQualifications(),
         Obx(
-          () => _renderCondition(
+              () => _renderCondition(
               "Fiziksel Durum",
               _controller.physicalCondition,
               _controller.physicalConditions, (value) {
@@ -70,28 +45,28 @@ class NortonPressureUlcerForm extends StatelessWidget {
           }),
         ),
         Obx(
-          () => _renderCondition("Mental Durum", _controller.mentalCondition,
+              () => _renderCondition("Mental Durum", _controller.mentalCondition,
               _controller.mentalConditions, (value) {
-            _controller.mentalConditionIndex =
-                _controller.mentalConditions.indexOf(value);
-          }),
+                _controller.mentalConditionIndex =
+                    _controller.mentalConditions.indexOf(value);
+              }),
         ),
         Obx(
-          () => _renderCondition("Aktivite", _controller.activityCondition,
+              () => _renderCondition("Aktivite", _controller.activityCondition,
               _controller.activityConditions, (value) {
-            _controller.activityConditionIndex =
-                _controller.activityConditions.indexOf(value);
-          }),
+                _controller.activityConditionIndex =
+                    _controller.activityConditions.indexOf(value);
+              }),
         ),
         Obx(
-          () => _renderCondition("Hareketlilik", _controller.movementCondition,
+              () => _renderCondition("Hareketlilik", _controller.movementCondition,
               _controller.movementConditions, (value) {
-            _controller.movementConditionIndex =
-                _controller.movementConditions.indexOf(value);
-          }),
+                _controller.movementConditionIndex =
+                    _controller.movementConditions.indexOf(value);
+              }),
         ),
         Obx(
-          () => _renderCondition(
+              () => _renderCondition(
               "Intokinans",
               _controller.incontinenceCondition,
               _controller.incontinenceConditions, (value) {
@@ -106,17 +81,17 @@ class NortonPressureUlcerForm extends StatelessWidget {
 
   Obx _sendButton() {
     return Obx(() => Visibility(
-          visible: _controller.isCalled,
-          child: Align(
-            alignment: Alignment.center,
-            child: VPButton(
-                bgColor: VPColors.primaryColor,
-                text: "Gönder",
-                textColor: Colors.white,
-                function: () => _controller.validate(),
-                width: .5),
-          ),
-        ));
+      visible: _controller.isCalled,
+      child: Align(
+        alignment: Alignment.center,
+        child: VPButton(
+            bgColor: VPColors.primaryColor,
+            text: "Gönder",
+            textColor: Colors.white,
+            function: () => _controller.validate(),
+            width: .5),
+      ),
+    ));
   }
 
   Padding _renderCondition(String name, String? value, List<String> items,
@@ -150,5 +125,5 @@ class NortonPressureUlcerForm extends StatelessWidget {
           );
         }).toList(),
         onChanged: onChanged);
-  }
+  }*/
 }

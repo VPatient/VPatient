@@ -4,58 +4,65 @@ List<NortonPressureUlcer> nortonPressureUlcerFromJson(String str) => List<Norton
 
 String nortonPressureUlcerToJson(List<NortonPressureUlcer> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+
+
 class NortonPressureUlcer {
-    NortonPressureUlcer({
-        required this.id,
-        required this.physicalCondition,
-        required this.mentalCondition,
-        required this.activityCondition,
-        required this.movementCondition,
-        required this.incontinenceCondition,
-        required this.owner,
-        required this.date,
-        required this.createdAt,
-        required this.updatedAt,
-        required this.v,
-    });
+    String? sId;
+    int? physicalCondition;
+    int? mentalCondition;
+    int? activityCondition;
+    int? movementCondition;
+    int? incontinenceCondition;
+    List<String>? factors;
+    String? owner;
+    String? date;
+    String? createdAt;
+    String? updatedAt;
+    int? iV;
 
-    final String id;
-    final int physicalCondition;
-    final int mentalCondition;
-    final int activityCondition;
-    final int movementCondition;
-    final int incontinenceCondition;
-    final String owner;
-    final DateTime date;
-    final DateTime createdAt;
-    final DateTime updatedAt;
-    final int v;
+    NortonPressureUlcer(
+        {this.sId,
+            this.physicalCondition,
+            this.mentalCondition,
+            this.activityCondition,
+            this.movementCondition,
+            this.incontinenceCondition,
+            this.factors,
+            this.owner,
+            this.date,
+            this.createdAt,
+            this.updatedAt,
+            this.iV});
 
-    factory NortonPressureUlcer.fromJson(Map<String, dynamic> json) => NortonPressureUlcer(
-        id: json["_id"],
-        physicalCondition: json["physicalCondition"],
-        mentalCondition: json["mentalCondition"],
-        activityCondition: json["activityCondition"],
-        movementCondition: json["movementCondition"],
-        incontinenceCondition: json["incontinenceCondition"],
-        owner: json["owner"],
-        date: DateTime.parse(json["date"]),
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
-        v: json["__v"],
-    );
+    NortonPressureUlcer.fromJson(Map<String, dynamic> json) {
+        sId = json['_id'];
+        physicalCondition = json['physicalCondition'];
+        mentalCondition = json['mentalCondition'];
+        activityCondition = json['activityCondition'];
+        movementCondition = json['movementCondition'];
+        incontinenceCondition = json['incontinenceCondition'];
+        factors = json['factors'].cast<String>();
+        owner = json['owner'];
+        date = json['date'];
+        createdAt = json['createdAt'];
+        updatedAt = json['updatedAt'];
+        iV = json['__v'];
+    }
 
-    Map<String, dynamic> toJson() => {
-        "_id": id,
-        "physicalCondition": physicalCondition,
-        "mentalCondition": mentalCondition,
-        "activityCondition": activityCondition,
-        "movementCondition": movementCondition,
-        "incontinenceCondition": incontinenceCondition,
-        "owner": owner,
-        "date": date.toIso8601String(),
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
-        "__v": v,
-    };
+    Map<String, dynamic> toJson() {
+        final Map<String, dynamic> data = new Map<String, dynamic>();
+        data['_id'] = this.sId;
+        data['physicalCondition'] = this.physicalCondition;
+        data['mentalCondition'] = this.mentalCondition;
+        data['activityCondition'] = this.activityCondition;
+        data['movementCondition'] = this.movementCondition;
+        data['incontinenceCondition'] = this.incontinenceCondition;
+        data['factors'] = this.factors;
+        data['owner'] = this.owner;
+        data['date'] = this.date;
+        data['createdAt'] = this.createdAt;
+        data['updatedAt'] = this.updatedAt;
+        data['__v'] = this.iV;
+        return data;
+    }
 }

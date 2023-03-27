@@ -12,6 +12,8 @@ import 'package:vpatient/screens/forms/vital_sign_form/vital_sign_form.dart';
 import 'package:vpatient/screens/slide_up_panel/slide_up_panel_controller.dart';
 import 'package:vpatient/style/colors.dart';
 
+import '../forms/ensuring_safe_environment_form/ensuring_safe_environment_form.dart';
+
 class SlideUpPanelView extends StatelessWidget {
   SlideUpPanelView({
     Key? key,
@@ -79,6 +81,7 @@ class SlideUpPanelView extends StatelessWidget {
               BloodSugarTraceForm(),
               MedicinesForm(),
               VitalSignForm(),
+              EnsuringSafeEnvironmentForm()
             ]),
           )
         ],
