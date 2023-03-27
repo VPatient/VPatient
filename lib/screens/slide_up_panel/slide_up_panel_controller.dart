@@ -18,7 +18,7 @@ class SlideUpPanelController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    tabController = TabController(length: 8, vsync: this);
+    tabController = TabController(length: 9, vsync: this);
     panelController = PanelController();
   }
 
