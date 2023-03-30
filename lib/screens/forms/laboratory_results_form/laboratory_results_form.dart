@@ -21,24 +21,30 @@ class LaboratoryResultForm extends StatelessWidget {
           }
           return SingleChildScrollView(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                DataTable(
-                  columnSpacing: 20,
-                  columns: const [
-                    DataColumn(label: Text("Parametre Adı")),
-                    DataColumn(label: Text("Sonuç")),
-                    DataColumn(label: Text("Birim")),
-                    DataColumn(label: Text("Referans Aralığı")),
-                  ],
-                  rows: List<DataRow>.generate(
-                    snapshot.data!.length,
-                    (index) => DataRow(
-                      cells: [
-                        DataCell(Text(snapshot.data![index].parameterName)),
-                        DataCell(Text(snapshot.data![index].result)),
-                        DataCell(Text(snapshot.data![index].unit)),
-                        DataCell(Text(snapshot.data![index].referanceInterval)),
-                      ],
+                SizedBox(
+                  width: double.infinity,
+                  child: DataTable(
+                    columnSpacing: 20,
+                    columns: const [
+                      DataColumn(label: Text("Parametre Adı")),
+                      DataColumn(label: Text("Sonuç")),
+                      DataColumn(label: Text("Birim")),
+                      DataColumn(label: Text("Referans Aralığı")),
+                    ],
+                    rows: List<DataRow>.generate(
+                      snapshot.data!.length,
+                      (index) => DataRow(
+                        cells: [
+                          DataCell(Text(snapshot.data![index].parameterName)),
+                          DataCell(Text(snapshot.data![index].result)),
+                          DataCell(Text(snapshot.data![index].unit)),
+                          DataCell(
+                              Text(snapshot.data![index].referanceInterval)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
