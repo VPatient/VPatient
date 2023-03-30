@@ -22,6 +22,8 @@ class APIEndpoints {
       "${_baseUrl}patient/fallrisk/factor/list";
   static const String getNortonPressureUlcerById =
       "${_baseUrl}patient/nortonpressureulcer/get";
+  static const String getLifeActivityDiagnosisById =
+      "${_baseUrl}patient/lifeactivity";
 
   // scenario endpoint
   static const String getScenario = "${_baseUrl}scenario/get";

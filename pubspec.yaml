@@ -21,7 +21,9 @@ dependencies:
   http: ^0.13.5
   jwt_decode: ^0.3.1
   sliding_up_panel: ^2.0.0+1
-
+  simple_form_builder: 
+    git: 
+      url: https://github.com/idriscanbolukbasi/simple_form_builder-0.0.22.git
 
 dev_dependencies:
   flutter_launcher_icons: "^0.10.0"

@@ -122,13 +122,15 @@ class PainDescriptionForm extends StatelessWidget {
   }
 
   _painQualifications() {
-    return Wrap(
-      direction: Axis.horizontal,
-      alignment: WrapAlignment.start,
-      spacing: 50,
-      children: _controller.painQualifications.map<Widget>((e) {
-        return _painQualificationItem(e);
-      }).toList(),
+    return SizedBox(
+      height: 200,
+      child: GridView.count(
+        physics: const NeverScrollableScrollPhysics(),
+        crossAxisCount: 4,
+        children: _controller.painQualifications.map<Widget>((e) {
+          return _painQualificationItem(e);
+        }).toList(),
+      ),
     );
   }
 
