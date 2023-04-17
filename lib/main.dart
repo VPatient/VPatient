@@ -56,15 +56,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: FlutterSplashScreen.fadeIn(
-            animationCurve: Curves.easeInOut,
-            backgroundColor: VPColors.primaryColor,
-            fadeInAnimationDuration: const Duration(milliseconds: 750),
-            fadeInChildWidget: Image.asset(
-              "assets/images/icons/vpatient-logo.png",
-              width: Get.size.width / 3,
-            ),
-            defaultNextScreen:
-                GetStorage().hasData("token") ? HomeScreen() : LoginScreen()));
+        body:
+                GetStorage().hasData("token") ? HomeScreen() : LoginScreen());
   }
 }
