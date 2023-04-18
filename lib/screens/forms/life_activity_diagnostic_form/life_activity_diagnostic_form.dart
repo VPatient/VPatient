@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:simple_form_builder/formbuilder.dart';
+import 'package:simple_form_builder/form_builder.dart';
 import 'package:vpatient/style/colors.dart';
 
 import 'life_activity_diagnostic_form_controller.dart';
@@ -41,6 +41,17 @@ class LifeActivityDiagnosisForm extends StatelessWidget {
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 child: FormBuilder(
+                  showIndex: false,
+                  dropdownDecoration: DropdownDecoration(
+                    // styling the dropdown
+                    width: 0.4,
+                    icon: Icons.arrow_drop_down,
+                    showInRow: true,
+                    iconColor: Colors.green,
+                    itemHeight: 50,
+                    underline: Container(height: 2, color: Colors.green),
+                    decoration: const BoxDecoration(),
+                  ),
                   submitButtonText: "Gönder",
                   submitTextDecoration: Theme.of(context)
                       .textTheme
@@ -52,12 +63,12 @@ class LifeActivityDiagnosisForm extends StatelessWidget {
                   initialData: _controller.formData[index],
                   index: 0,
                   onSubmit: (val) {
-                    for (var element in val.data!.first.questions!) {
-                      if (element.answer != element.correct_answer) {
+                    for (var element in val!.data!.first.questions!) {
+                      if (element.answer != element.correctAnswer) {
                         print("error");
                         Get.snackbar(
                           "${element.title} is not correct",
-                          '${element.correct_answer} is the correct answer',
+                          '${element.correctAnswer} is the correct answer',
                           snackStyle: SnackStyle.FLOATING,
                           duration: const Duration(seconds: 3),
                           backgroundColor: Colors.red,

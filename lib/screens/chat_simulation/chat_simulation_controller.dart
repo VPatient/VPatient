@@ -15,6 +15,8 @@ import 'package:vpatient/utils/message_sender.dart';
 import 'package:vpatient/utils/user_helper.dart';
 import 'package:vpatient/widgets/vp_snackbar.dart';
 
+import '../forms/life_activity_diagnostic_form/life_activity_diagnostic_form_controller.dart';
+
 class ChatSimulationController extends GetxController {
   @override
   void onInit() async {
@@ -25,9 +27,14 @@ class ChatSimulationController extends GetxController {
     setAppBarText = patient?.name;
   }
 
+  final _lifeActivityDiagnosisFormController =
+      Get.put(LifeActivityDiagnosisFormController());
+
   final _appBarText = "".obs; // app bar text
   final _message = "Hasta ile iletişime geçin.".obs;
+
   get message => _message.value;
+
   set setMessage(String value) => _message.value = value;
   final TextEditingController chatController =
       TextEditingController(); // chat controller
@@ -152,6 +159,14 @@ class ChatSimulationController extends GetxController {
     if (message.action) {
       // get tab index
       int tab = _findTabWithAction(message.text);
+      int childTabIndex = 0;
+
+      //8 den sonrası için alt tabın indisleri olduğu için 8 e eşitlendi
+      if (tab > 8) {
+        childTabIndex = tab%8;
+        tab = 8;
+
+      }
 
       // check if tab is -1
       if (tab == -1) {
@@ -161,8 +176,14 @@ class ChatSimulationController extends GetxController {
       // open panel
       openPanel();
 
+
       // animate to tab
       _panelController.tabController.animateTo(tab,
+          curve: Curves.decelerate,
+          duration: const Duration(milliseconds: 500));
+
+      // animate to child tab
+      _lifeActivityDiagnosisFormController.tabController.animateTo(childTabIndex,
           curve: Curves.decelerate,
           duration: const Duration(milliseconds: 500));
 
@@ -213,6 +234,24 @@ class ChatSimulationController extends GetxController {
       case "{VitalSignForm}":
         lastForm = Forms.vitalSignForm;
         return 7;
+      case "{LifeActivityForm0}":
+        lastForm = Forms.vitalSignForm;
+        return 8;
+      case "{LifeActivityForm1}":
+        lastForm = Forms.vitalSignForm;
+        return 9;
+      case "{LifeActivityForm2}":
+        lastForm = Forms.vitalSignForm;
+        return 10;
+      case "{LifeActivityForm3}":
+        lastForm = Forms.vitalSignForm;
+        return 11;
+      case "{LifeActivityForm4}":
+        lastForm = Forms.vitalSignForm;
+        return 12;
+      case "{LifeActivityForm5}":
+        lastForm = Forms.vitalSignForm;
+        return 13;
       default:
         return -1;
     }
