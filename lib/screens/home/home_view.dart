@@ -2,7 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vpatient/models/grade.dart';
+import 'package:vpatient/screens/chat_simulation/chat_simulation_view.dart';
+import 'package:vpatient/screens/doctor_order/doctor_order_view.dart';
 import 'package:vpatient/screens/home/home_controller.dart';
+import 'package:vpatient/screens/landing_page/landing_page_view.dart';
+import 'package:vpatient/screens/patient_diagnosis/patient_diagnosis_view.dart';
 import 'package:vpatient/screens/patient_list/patient_list_view.dart';
 import 'package:vpatient/style/colors.dart';
 import 'package:vpatient/utils/avatar_helper.dart';
@@ -32,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
+          /*Column(
             children: [
               CircleAvatar(
                 maxRadius: 40,
@@ -83,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   );
                 }
-              })),
+              })),*/
           VPButton(
             bgColor: VPColors.primaryColor,
             text: "Yeni Hasta",
@@ -93,7 +97,6 @@ class HomeScreen extends StatelessWidget {
               Get.to(() => PatientListScreen());
             },
           ),
-          /*
           ElevatedButton(
             child: const Text("Hastaları Gör"),
             onPressed: () {
@@ -117,7 +120,10 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => _controller.openPanel()),
           ElevatedButton(
               child: const Text("Hasta Tanısı"),
-              onPressed: () => {Get.to(() => PatientDiagnosisScreen())}),*/
+              onPressed: () => {Get.to(() => PatientDiagnosisScreen())}),
+          ElevatedButton(
+              child: const Text("Hekim Orderı"),
+              onPressed: () => {Get.off(() => DoctorOrderPage())}),
         ],
       )),
     );
