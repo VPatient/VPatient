@@ -31,4 +31,7 @@ class APIEndpoints {
   // grade endpoints
   static const String createGrade = "${_baseUrl}grade/create";
   static const String getGrade = "${_baseUrl}grade/user";
+
+  // order endpoints
+  static const String getDoctorOrderMedicines = "${_baseUrl}order/medicine/get";
 }

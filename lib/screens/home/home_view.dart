@@ -123,7 +123,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => {Get.to(() => PatientDiagnosisScreen())}),
           ElevatedButton(
               child: const Text("Hekim Orderı"),
-              onPressed: () => {Get.off(() => DoctorOrderPage())}),
+              onPressed: () => {Get.to(() => DoctorOrderPage())}),
         ],
       )),
     );
