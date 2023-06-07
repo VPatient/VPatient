@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          /*Column(
+          Column(
             children: [
               CircleAvatar(
                 maxRadius: 40,
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   );
                 }
-              })),*/
+              })), /*
           VPButton(
             bgColor: VPColors.primaryColor,
             text: "Yeni Hasta",
@@ -123,7 +123,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => {Get.to(() => PatientDiagnosisScreen())}),
           ElevatedButton(
               child: const Text("Hekim Orderı"),
-              onPressed: () => {Get.to(() => DoctorOrderPage())}),
+              onPressed: () => {Get.to(() => DoctorOrderPage())}),*/
         ],
       )),
     );
