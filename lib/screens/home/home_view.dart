@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          /*Column(
+          Column(
             children: [
               CircleAvatar(
                 maxRadius: 40,
@@ -87,43 +87,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   );
                 }
-              })),*/
-          VPButton(
-            bgColor: VPColors.primaryColor,
-            text: "Yeni Hasta",
-            textColor: Colors.white,
-            width: .6,
-            function: () {
-              Get.to(() => PatientListScreen());
-            },
-          ),
-          ElevatedButton(
-            child: const Text("Hastaları Gör"),
-            onPressed: () {
-              Get.to(() => PatientListScreen());
-            },
-          ),
-          ElevatedButton(
-            child: const Text("Chat Ekranı"),
-            onPressed: () {
-              Get.to(() => ChatSimulationScreen());
-            },
-          ),
-          ElevatedButton(
-            child: const Text("Landing Page"),
-            onPressed: () {
-              Get.to(() => LandingPage());
-            },
-          ),
-          ElevatedButton(
-              child: const Text("Formlar"),
-              onPressed: () => _controller.openPanel()),
-          ElevatedButton(
-              child: const Text("Hasta Tanısı"),
-              onPressed: () => {Get.to(() => PatientDiagnosisScreen())}),
-          ElevatedButton(
-              child: const Text("Hekim Orderı"),
-              onPressed: () => {Get.to(() => DoctorOrderPage())}),
+              })),
         ],
       )),
     );
